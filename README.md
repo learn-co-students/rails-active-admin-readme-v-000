@@ -1,0 +1,1 @@
+# rails-active-admin-readme
