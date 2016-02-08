@@ -46,9 +46,3 @@ post = Post.create(title: "Links! Click Links!", description: post3, author: aut
 
 #set one to yesterday
 post.update_attribute(:created_at, Time.zone.today.advance(days: -1))
-
-# let's do this
-#
-300.times do
-  author1.posts.create(title: Faker::Lorem.sentence, description: Faker::Lorem.paragraph)
-end

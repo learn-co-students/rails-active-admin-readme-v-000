@@ -3,136 +3,128 @@
 ## Objectives
 
 1. Use the ActiveAdmin gem to add admin features to the blog app.
+2. Customize the ActiveAdmin resource to prevent certain actions and
+   hide form fields.
 
 ## Lesson
 
-We're going to be using the Kaminari gem to paginate our blog posts so that each page is more manageable.
+We're going to use [ActiveAdmin](https://github.com/activeadmin/activeadmin) to add administrative features to our blog application. Not anyone should just be able to come in and create a new `author` on our blog. That's something only an admin should do.
 
-Start by running `rake db:seed` on the included app. This is going to
-create a bunch of posts. Next run your server and browse to `/posts`.
+Our app already has [Devise](https://github.com/plataformatec/devise)
+set up for user management. We're going to leave our main blog pages
+open to the public and only password-protect the ActiveAdmin parts.
 
-What a nightmare, right? So many posts on one page! What we need is an
-easy way to only show a certain amount of posts per page, and allow the
-user to go through them page by page.
+### Setting Up ActiveAdmin
 
-### Kaminari To The Rescue
+To get started, let's add ActiveAdmin to our Gemfile:
 
-Kaminari is a Japanese word meaning "thunder", and the obvious link
-between that and this lesson is that the [Kaminari](https://github.com/amatsuda/kaminari) gem makes pagination a
-slam dunk.
+`gem 'activeadmin', github: 'activeadmin'`
 
-![thunder dunk](http://i.giphy.com/K7so6CUdxkW1a.gif)
+We need the `github: 'activeadmin'` part to use the latest
+under-development version, which is compatible with Rails 4.2.
 
-Let's just roll with that. You know. Like thunder.
+Then run `bundle install`.
 
-To get started, we'll add Kaminari to our Gemfile:
+**Note:** We're going to follow along with the [github docs](https://github.com/activeadmin/activeadmin/blob/master/docs/0-installation.md), because the ActiveAdmin website is out-of-date.
 
-`gem 'kaminari'`
+Now we generate the ActiveAdmin installation with `rails g
+active_admin:install`. This will create a migration for an `AdminUser`
+model, add a default user to our `seeds.rb` file, and generate the base
+ActiveAdmin files.
 
-Then run `bundle install` to get it installed.
+Let's run `rake db:migrate` then `rake db:seed` to finish the setup.
 
-Now let's run `rails g kaminari:config` to generate a configuration file
-for Kaminari. You can find the file in `config/initializers`. Let's look
-inside:
+Finally, restart your Rails server, then browse to
+`http://localhost:3000/admin`.
+
+We have a login page! Log in as `admin@example.com` with password
+`password` and you'll be on the ActiveAdmin dashboard.
+
+**Top-tip:** You can change the login and password in `seeds.rb` before
+migrating, or even better, log in and change the login/password from
+within the app to make it more secure.
+
+### Registering Models
+
+Okay, we have a dashboard, but there's not much to do. That's because we
+haven't registered any models yet.
+
+Let's set this up to administer `authors`.
+
+`rails generate active_admin:resource Author`
+
+This will create a new file at `app/admin/author.rb`. We're not even
+gonna look at it yet. Trust me. Look away!
+
+![look away](http://i.giphy.com/w28gdjyOPemd2.gif)
+
+Just reload `/admin` and you should see a new item in the top bar for
+`Authors`. Click it. You can add new authors, edit and delete existing
+ones, all from a single command and no code!
+
+![joey shock](http://i.giphy.com/ccosx2jCejdew.gif)
+
+### Customizing ActiveAdmin Resources
+
+Out of the box it's incredibly easy to set up ActiveAdmin to provide
+admin features. But you might want to give some restrictions to what it
+can do.
+
+First, let's prevent authors from being deleted, even by ActiveAdmin.
+*Now* you can look at `app/admin/author.rb`.
+
+By default, all CRUD actions are available to an ActiveAdmin resource.
+But we can change that:
 
 ```ruby
-# config\initializers\kaminari_config.rb
+# admin/author.rb
 
-Kaminari.configure do |config|
-  # config.default_per_page = 25
-  # config.max_per_page = nil
-  # config.window = 4
-  # config.outer_window = 0
-  # config.left = 0
-  # config.right = 0
-  # config.page_method_name = :page
-  # config.param_name = :page
+ActiveAdmin.register Author do
+
+  actions :all, except: [:destroy]
+
 end
 ```
 
-These are the defaults. The one we're interested in is
-`default_per_page`, which sets up how many results will be in each page.
-Let's change that to 10 (don't forget to un-comment it).
+If we refresh the authors admin page, the "Delete" link is now gone.
 
-
-```ruby
-# config\initializers\kaminari_config.rb
-
-Kaminari.configure do |config|
-  config.default_per_page = 10
-# ...
-```
-Restart your Rails server to make sure the new gem and initializer are
-picked up.
-
-Okay. Now let's get into the controller and set our query up to use
-Kaminari.
+If we want to edit the elements on the form, and remove `bio` so that
+the author is the only one in control of the bio, we can override the
+default form:
 
 ```ruby
-# controllers\posts_controller.rb
+# admin/author.rb
 
-# ...
-  def index
-    @posts = Post.order(created_at: :desc).page(params[:page])
+  actions :all, except: [:destroy]
+
+  form do |f|
+    inputs 'Author' do
+      f.input :name
+      f.input :genre
+    end
+    f.semantic_errors
+    f.actions
   end
-# ...
 ```
 
-Here we're getting posts by most recent and then using the `page` method
-of Kaminari to get a "page" (ten, in our case) of results. We're passing
-`params[:page]` to the `page` method so that we can control *which* page
-we get. And if `params[:page]` is `nil`, we'll get the first page, so it
-works by default.
+Reload again and bio is gone. This `form do ... end` block uses an
+ActiveAdmin domain-specific language (DSL) to manipulate a [Formtastic](https://github.com/justinfrench/formtastic) form. Removing it completely returns the form to the default.
 
-If you reload your `/posts` page, you should see that we're now limited
-to ten results, which is much more manageable!
-
-But how do we get to the next page of results?
-
-Kaminari provides us with plenty of helpers to output navigation
-controls. Let's start by adding regular pagination controls with the
-`paginate` helper:
-
-```erb
-# views\posts\index.html.erb
-
-<h1>Blog Posts!</h1>
-<%= paginate @posts %>
-
-<% @posts.each do |post| %>
-# ...
-```
-
-Reload the page and we now have the ability to go next, previous, first,
-last, or by page number.
-
-If we want to add a little more contextual information, we can use the
-`page_entries_info` helper, like this:
-
-```erb
-<h1>Blog Posts!</h1>
-<%= page_entries_info @posts %>
-<%= paginate @posts %>
-<% @posts.each do |post| %>
-# ...
-```
-
-And we can further customize our display, like, displaying only two page
-numbers on either side of the current page by passing in a value for
-`window`:
-
-```erb
-<h1>Blog Posts!</h1>
-<%= page_entries_info @posts %>
-<%= paginate @posts, window: 2 %>
-<% @posts.each do |post| %>
-# ...
-```
-
-More customization options for `paginate` can be found in the Kaminari [README](https://github.com/amatsuda/kaminari).
+**Advanced:** You might be tempted to think of `admin/author.rb` as if it
+were a kind of model, but as you can see, it controls all aspects of an
+ActiveAdmin resource, including both business logic and presentation
+logic. One could make the argument that this is a violation of
+Separation of Concerns, but in Rails a "resource" is a concept that
+comprises model, controller, and view, so in that sense, an
+ActiveAdmin's resource is concerned with all aspects of that resource.
+In any case, it's easy to find where the code goes.
 
 ## Summary
 
-We've seen just how easy it is to use Kaminari to quickly add
-pagination to large datasets in our app, despite still having no idea
-why it's named after thunder.
+We've seen how easy it is to use ActiveAdmin to quickly add
+administration to our app, and how to do some basic customization. More
+configuration options are available and can be found in the docs, but I
+think we can all agree that the default options are very helpful and
+easy to use.
+
+![friends clap](http://i.giphy.com/lI6nHr5hWXlu0.gif)
