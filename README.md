@@ -84,6 +84,9 @@ ActiveAdmin.register Author do
 end
 ```
 
+**Note:** In some instances, you will be required to set `permit_params`
+even if you don't want to change any of them from the default. If you receive an `ActiveModel::ForbiddenAttributes` exception when working with ActiveAdmin, set up those `permit_params`.
+
 Now we're only allowing `name` and `genre` to be set.
 
 By default, all CRUD actions are available to an ActiveAdmin resource.
