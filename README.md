@@ -73,6 +73,19 @@ can do.
 First, let's prevent authors from being deleted, even by ActiveAdmin.
 *Now* you can look at `app/admin/author.rb`.
 
+We want to make sure we're set up to use Strong Params to only allow
+certain fields, so let's set that up:
+
+```ruby
+# admin/author.rb
+
+ActiveAdmin.register Author do
+    permit_params :name, :genre
+end
+```
+
+Now we're only allowing `name` and `genre` to be set.
+
 By default, all CRUD actions are available to an ActiveAdmin resource.
 But we can change that:
 
@@ -81,6 +94,7 @@ But we can change that:
 
 ActiveAdmin.register Author do
 
+  permit_params :name, :genre
   actions :all, except: [:destroy]
 
 end
@@ -89,12 +103,13 @@ end
 If we refresh the authors admin page, the "Delete" link is now gone.
 
 If we want to edit the elements on the form, and remove `bio` so that
-the author is the only one in control of the bio, we can override the
+the form matches our `permit_params`, we can override the
 default form:
 
 ```ruby
 # admin/author.rb
 
+  permit_params :name, :genre
   actions :all, except: [:destroy]
 
   form do |f|
