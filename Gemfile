@@ -1,5 +1,7 @@
 source 'https://rubygems.org'
 
+# Using latest version compatible with rails 4.2
+gem 'activeadmin', github: 'activeadmin'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.2.5'
