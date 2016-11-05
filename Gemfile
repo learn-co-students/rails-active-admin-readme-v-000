@@ -34,6 +34,8 @@ gem 'devise'
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
+gem 'activeadmin', github: 'activeadmin'
+
 group :development, :test do
   gem 'byebug'
   gem 'rspec-rails', '~> 3.0'
