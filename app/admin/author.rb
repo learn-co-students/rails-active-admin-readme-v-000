@@ -12,14 +12,14 @@ ActiveAdmin.register Author do
   end
 
 
-  form do |f|
-    f.inputs "Author" do
-      f.input :name
-      f.input :genre
-    end
-    f.semantic_errors
-    f.actions
-  end
+  # form do |f|
+  #   f.inputs "Author" do
+  #     f.input :name
+  #     f.input :genre
+  #   end
+  #   f.semantic_errors
+  #   f.actions
+  # end
 # See permitted parameters documentation:
 # https://github.com/activeadmin/activeadmin/blob/master/docs/2-resource-customization.md#setting-up-strong-parameters
 #

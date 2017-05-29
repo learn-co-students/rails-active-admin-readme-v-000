@@ -4146,3 +4146,50 @@ Processing by Admin::AuthorsController#index as HTML
   [1m[35mPost Load (0.3ms)[0m  SELECT "posts".* FROM "posts"
   Rendered /Users/Apple/.rvm/gems/ruby-2.3.1/bundler/gems/activeadmin-d941aaa88c6e/app/views/active_admin/resource/index.html.arb (294.8ms)
 Completed 200 OK in 370ms (Views: 325.8ms | ActiveRecord: 4.3ms)
+
+
+Started GET "/admin/authors" for ::1 at 2017-05-29 12:40:56 -0700
+Processing by Admin::AuthorsController#index as HTML
+  [1m[36mAdminUser Load (0.2ms)[0m  [1mSELECT  "admin_users".* FROM "admin_users" WHERE "admin_users"."id" = ?  ORDER BY "admin_users"."id" ASC LIMIT 1[0m  [["id", 1]]
+  [1m[35m (0.5ms)[0m  SELECT COUNT(count_column) FROM (SELECT  1 AS count_column FROM "authors" LIMIT 30 OFFSET 0) subquery_for_count
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT COUNT(count_column) FROM (SELECT  1 AS count_column FROM "authors" LIMIT 30 OFFSET 0) subquery_for_count[0m
+  [1m[35m (0.2ms)[0m  SELECT COUNT(*) FROM "authors"
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT COUNT(count_column) FROM (SELECT  1 AS count_column FROM "authors" LIMIT 30 OFFSET 0) subquery_for_count[0m
+  [1m[35mAuthor Load (0.2ms)[0m  SELECT  "authors".* FROM "authors"  ORDER BY "authors"."id" desc LIMIT 30 OFFSET 0
+  [1m[36mPost Load (0.2ms)[0m  [1mSELECT "posts".* FROM "posts"[0m
+  Rendered /Users/Apple/.rvm/gems/ruby-2.3.1/bundler/gems/activeadmin-d941aaa88c6e/app/views/active_admin/resource/index.html.arb (266.4ms)
+Completed 200 OK in 305ms (Views: 277.8ms | ActiveRecord: 2.5ms)
+
+
+Started GET "/admin/authors" for ::1 at 2017-05-29 12:40:59 -0700
+Processing by Admin::AuthorsController#index as HTML
+  [1m[35mAdminUser Load (0.1ms)[0m  SELECT  "admin_users".* FROM "admin_users" WHERE "admin_users"."id" = ?  ORDER BY "admin_users"."id" ASC LIMIT 1  [["id", 1]]
+  [1m[36m (0.3ms)[0m  [1mSELECT COUNT(count_column) FROM (SELECT  1 AS count_column FROM "authors" LIMIT 30 OFFSET 0) subquery_for_count[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT COUNT(count_column) FROM (SELECT  1 AS count_column FROM "authors" LIMIT 30 OFFSET 0) subquery_for_count
+  [1m[36m (0.2ms)[0m  [1mSELECT COUNT(*) FROM "authors"[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT COUNT(count_column) FROM (SELECT  1 AS count_column FROM "authors" LIMIT 30 OFFSET 0) subquery_for_count
+  [1m[36mAuthor Load (0.2ms)[0m  [1mSELECT  "authors".* FROM "authors"  ORDER BY "authors"."id" desc LIMIT 30 OFFSET 0[0m
+  [1m[35mPost Load (0.2ms)[0m  SELECT "posts".* FROM "posts"
+  Rendered /Users/Apple/.rvm/gems/ruby-2.3.1/bundler/gems/activeadmin-d941aaa88c6e/app/views/active_admin/resource/index.html.arb (267.2ms)
+Completed 200 OK in 281ms (Views: 276.4ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/admin/authors/6" for ::1 at 2017-05-29 12:41:05 -0700
+Processing by Admin::AuthorsController#show as HTML
+  Parameters: {"id"=>"6"}
+  [1m[36mAdminUser Load (0.3ms)[0m  [1mSELECT  "admin_users".* FROM "admin_users" WHERE "admin_users"."id" = ?  ORDER BY "admin_users"."id" ASC LIMIT 1[0m  [["id", 1]]
+  [1m[35mAuthor Load (0.2ms)[0m  SELECT  "authors".* FROM "authors" WHERE "authors"."id" = ? LIMIT 1  [["id", 6]]
+  [1m[36m (0.2ms)[0m  [1mSELECT COUNT(*) FROM "active_admin_comments" WHERE "active_admin_comments"."resource_type" = ? AND "active_admin_comments"."namespace" = ? AND "active_admin_comments"."resource_id" = 6[0m  [["resource_type", "Author"], ["namespace", "admin"]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT COUNT(*) FROM "active_admin_comments" WHERE "active_admin_comments"."resource_type" = ? AND "active_admin_comments"."namespace" = ? AND "active_admin_comments"."resource_id" = 6  [["resource_type", "Author"], ["namespace", "admin"]]
+  Rendered /Users/Apple/.rvm/gems/ruby-2.3.1/bundler/gems/activeadmin-d941aaa88c6e/app/views/active_admin/resource/show.html.arb (251.5ms)
+Completed 200 OK in 269ms (Views: 261.4ms | ActiveRecord: 1.2ms)
+
+
+Started GET "/admin/authors/6/edit" for ::1 at 2017-05-29 12:41:08 -0700
+Processing by Admin::AuthorsController#edit as HTML
+  Parameters: {"id"=>"6"}
+  [1m[36mAdminUser Load (0.2ms)[0m  [1mSELECT  "admin_users".* FROM "admin_users" WHERE "admin_users"."id" = ?  ORDER BY "admin_users"."id" ASC LIMIT 1[0m  [["id", 1]]
+  [1m[35mAuthor Load (0.2ms)[0m  SELECT  "authors".* FROM "authors" WHERE "authors"."id" = ? LIMIT 1  [["id", 6]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "authors".* FROM "authors" WHERE "authors"."id" = ? LIMIT 1[0m  [["id", "6"]]
+  Rendered /Users/Apple/.rvm/gems/ruby-2.3.1/bundler/gems/activeadmin-d941aaa88c6e/app/views/active_admin/resource/edit.html.arb (252.9ms)
+Completed 200 OK in 270ms (Views: 265.5ms | ActiveRecord: 0.4ms)
