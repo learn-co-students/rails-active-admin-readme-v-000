@@ -49,3 +49,5 @@ group :development do
   gem 'spring'
 end
 
+gem 'jquery-ui-rails', '~> 5.0.5'
+gem 'activeadmin'
