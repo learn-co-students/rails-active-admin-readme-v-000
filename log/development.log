@@ -3241,3 +3241,1148 @@ Processing by PostsController#index as HTML
   [1m[36mAuthor Load (0.1ms)[0m  [1mSELECT  "authors".* FROM "authors" WHERE "authors"."id" = ? LIMIT 1[0m  [["id", 3]]
   Rendered posts/index.html.erb within layouts/application (33.3ms)
 Completed 200 OK in 260ms (Views: 253.3ms | ActiveRecord: 1.5ms)
+  [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Migrating to DeviseCreateAdminUsers (20170705222251)
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.6ms)[0m  [1mCREATE TABLE "admin_users" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "email" varchar DEFAULT '' NOT NULL, "encrypted_password" varchar DEFAULT '' NOT NULL, "reset_password_token" varchar, "reset_password_sent_at" datetime, "remember_created_at" datetime, "sign_in_count" integer DEFAULT 0 NOT NULL, "current_sign_in_at" datetime, "last_sign_in_at" datetime, "current_sign_in_ip" varchar, "last_sign_in_ip" varchar, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) [0m
+  [1m[35m (0.1ms)[0m  select sqlite_version(*)
+  [1m[36m (0.5ms)[0m  [1mCREATE UNIQUE INDEX "index_admin_users_on_email" ON "admin_users" ("email")[0m
+  [1m[35m (0.1ms)[0m              SELECT sql
+            FROM sqlite_master
+            WHERE name='index_admin_users_on_email' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_admin_users_on_email' AND type='index'
+
+  [1m[36m (0.2ms)[0m  [1mCREATE UNIQUE INDEX "index_admin_users_on_reset_password_token" ON "admin_users" ("reset_password_token")[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES (?)  [["version", "20170705222251"]]
+  [1m[36m (56.8ms)[0m  [1mcommit transaction[0m
+Migrating to CreateActiveAdminComments (20170705222301)
+  [1m[35m (0.2ms)[0m  begin transaction
+  [1m[36m (0.4ms)[0m  [1mCREATE TABLE "active_admin_comments" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "namespace" varchar, "body" text, "resource_id" integer, "resource_type" varchar, "author_id" integer, "author_type" varchar, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) [0m
+  [1m[35m (0.2ms)[0m  CREATE  INDEX "index_active_admin_comments_on_namespace" ON "active_admin_comments" ("namespace")
+  [1m[36m (0.1ms)[0m  [1m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_active_admin_comments_on_namespace' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_active_admin_comments_on_namespace' AND type='index'
+[0m
+  [1m[35m (0.2ms)[0m  CREATE  INDEX "index_active_admin_comments_on_author_type_and_author_id" ON "active_admin_comments" ("author_type", "author_id")
+  [1m[36m (0.1ms)[0m  [1m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_active_admin_comments_on_author_type_and_author_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_active_admin_comments_on_author_type_and_author_id' AND type='index'
+[0m
+  [1m[35m (0.2ms)[0m              SELECT sql
+            FROM sqlite_master
+            WHERE name='index_active_admin_comments_on_namespace' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_active_admin_comments_on_namespace' AND type='index'
+
+  [1m[36m (0.2ms)[0m  [1mCREATE  INDEX "index_active_admin_comments_on_resource_type_and_resource_id" ON "active_admin_comments" ("resource_type", "resource_id")[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES (?)  [["version", "20170705222301"]]
+  [1m[36m (2.7ms)[0m  [1mcommit transaction[0m
+  [1m[35mActiveRecord::SchemaMigration Load (0.1ms)[0m  SELECT "schema_migrations".* FROM "schema_migrations"
+  [1m[36m (0.1ms)[0m  [1m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_active_admin_comments_on_resource_type_and_resource_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_active_admin_comments_on_resource_type_and_resource_id' AND type='index'
+[0m
+  [1m[35m (0.2ms)[0m              SELECT sql
+            FROM sqlite_master
+            WHERE name='index_active_admin_comments_on_author_type_and_author_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_active_admin_comments_on_author_type_and_author_id' AND type='index'
+
+  [1m[36m (0.1ms)[0m  [1m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_active_admin_comments_on_namespace' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_active_admin_comments_on_namespace' AND type='index'
+[0m
+  [1m[35m (0.1ms)[0m              SELECT sql
+            FROM sqlite_master
+            WHERE name='index_admin_users_on_reset_password_token' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_admin_users_on_reset_password_token' AND type='index'
+
+  [1m[36m (0.1ms)[0m  [1m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_admin_users_on_email' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_admin_users_on_email' AND type='index'
+[0m
+  [1m[35m (0.1ms)[0m              SELECT sql
+            FROM sqlite_master
+            WHERE name='index_users_on_reset_password_token' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_users_on_reset_password_token' AND type='index'
+
+  [1m[36m (0.1ms)[0m  [1m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_users_on_email' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_users_on_email' AND type='index'
+[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35mPost Load (0.3ms)[0m  SELECT "posts".* FROM "posts"
+  [1m[36m (0.2ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.5ms)[0m  DELETE FROM "posts" WHERE "posts"."id" = ?  [["id", 1]]
+  [1m[36m (8.2ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.2ms)[0m  begin transaction
+  [1m[36mSQL (0.3ms)[0m  [1mDELETE FROM "posts" WHERE "posts"."id" = ?[0m  [["id", 2]]
+  [1m[35m (2.7ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.2ms)[0m  DELETE FROM "posts" WHERE "posts"."id" = ?  [["id", 3]]
+  [1m[36m (3.1ms)[0m  [1mcommit transaction[0m
+  [1m[35mAuthor Load (0.4ms)[0m  SELECT "authors".* FROM "authors"
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  DELETE FROM "authors" WHERE "authors"."id" = ?  [["id", 1]]
+  [1m[36m (4.1ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.2ms)[0m  begin transaction
+  [1m[36mSQL (0.2ms)[0m  [1mDELETE FROM "authors" WHERE "authors"."id" = ?[0m  [["id", 2]]
+  [1m[35m (3.6ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.2ms)[0m  DELETE FROM "authors" WHERE "authors"."id" = ?  [["id", 3]]
+  [1m[36m (2.6ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.4ms)[0m  [1mINSERT INTO "authors" ("name", "genre", "bio", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["name", "Stephen King"], ["genre", "Romance"], ["bio", "Writes a lot of scary things."], ["created_at", "2017-07-05 22:25:02.335338"], ["updated_at", "2017-07-05 22:25:02.335338"]]
+  [1m[35m (3.3ms)[0m  commit transaction
+  [1m[36m (0.2ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "authors" ("name", "genre", "bio", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)  [["name", "Ariana Huffington"], ["genre", "Comedy"], ["bio", "Up and comer. One to watch."], ["created_at", "2017-07-05 22:25:02.342566"], ["updated_at", "2017-07-05 22:25:02.342566"]]
+  [1m[36m (2.9ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "authors" ("name", "genre", "bio", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["name", "Horse Ebooks"], ["genre", "?????"], ["bio", "Eclectic."], ["created_at", "2017-07-05 22:25:02.349205"], ["updated_at", "2017-07-05 22:25:02.349205"]]
+  [1m[35m (2.7ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.4ms)[0m  INSERT INTO "posts" ("title", "description", "author_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)  [["title", "Something About Democrats"], ["description", "  Last night I dreamt there is more to life than to bully friends.\n  What has that got to do with Democrats, you probably wonder...\n  The answer is here. Right here. Back in school my hair was silly.\n  Nevermind about the details, but... In a nut-shell: And still,\n  it was strange. Using Google, I found a 12-sided dice.\n  Which would be nothing special but...\n"], ["author_id", 4], ["created_at", "2017-07-05 22:25:02.364799"], ["updated_at", "2017-07-05 22:25:02.364799"]]
+  [1m[36m (8.0ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "posts" ("title", "description", "author_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["title", "Spam Spam Spam"], ["description", "  It occurred to me that no matter what cards you are dealt,\n  you need to enjoy the small joys. How is this related to Spam, you ask.\n  Fair enough. OK, I will tell you something here now...\n  Sometime around last year I loved movies. Yeah, just what it sounds like.\n  In a nut-shell: And still, it was strange. I collided with the powers of a my computer,\n  broken and gray. And here's why this matters...\n"], ["author_id", 5], ["created_at", "2017-07-05 22:25:02.376713"], ["updated_at", "2017-07-05 22:25:02.376713"]]
+  [1m[35m (6.4ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "posts" ("title", "description", "author_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)  [["title", "Links! Click Links!"], ["description", "  Last night I dreamt we simply need to realize to be so competitive.\n  Does the responsibility lie with Links, you probably wonder...\n  The answer is here. Right here. About the time I broke up with my\n  ex I was totally into music. Whatever. So that's that.\n  But something wasn't right. I stumbled upon a giant banana.\n"], ["author_id", 6], ["created_at", "2017-07-05 22:25:02.386744"], ["updated_at", "2017-07-05 22:25:02.386744"]]
+  [1m[36m (5.6ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.2ms)[0m  begin transaction
+  [1m[36mSQL (0.4ms)[0m  [1mUPDATE "posts" SET "created_at" = ?, "updated_at" = ? WHERE "posts"."id" = ?[0m  [["created_at", "2017-07-04 00:00:00.000000"], ["updated_at", "2017-07-05 22:25:02.396447"], ["id", 6]]
+  [1m[35m (11.4ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mAdminUser Exists (0.2ms)[0m  SELECT  1 AS one FROM "admin_users" WHERE "admin_users"."email" = 'admin@example.com' LIMIT 1
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "admin_users" ("email", "encrypted_password", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["email", "admin@example.com"], ["encrypted_password", "$2a$10$DP4TE4Qc78yUbgszmLb0EO7bm8pLUQEqBtGL/5ssRiEyr46jdzVvW"], ["created_at", "2017-07-05 22:25:02.667039"], ["updated_at", "2017-07-05 22:25:02.667039"]]
+  [1m[35m (6.4ms)[0m  commit transaction
+
+
+Started GET "/" for 67.86.240.24 at 2017-07-05 22:26:01 +0000
+Cannot render console from 67.86.240.24! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+  [1m[36mActiveRecord::SchemaMigration Load (0.4ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by PostsController#index as HTML
+  [1m[35mPost Load (0.3ms)[0m  SELECT "posts".* FROM "posts"
+  [1m[36mAuthor Load (0.2ms)[0m  [1mSELECT  "authors".* FROM "authors" WHERE "authors"."id" = ? LIMIT 1[0m  [["id", 4]]
+  [1m[35mAuthor Load (0.1ms)[0m  SELECT  "authors".* FROM "authors" WHERE "authors"."id" = ? LIMIT 1  [["id", 5]]
+  [1m[36mAuthor Load (0.1ms)[0m  [1mSELECT  "authors".* FROM "authors" WHERE "authors"."id" = ? LIMIT 1[0m  [["id", 6]]
+  Rendered posts/index.html.erb within layouts/application (36.4ms)
+Completed 500 Internal Server Error in 5005ms (ActiveRecord: 1.7ms)
+
+ActionView::Template::Error (couldn't find file 'jquery3' with type 'application/javascript'):
+    2: <html>
+    3: <head>
+    4:   <title>BlogFlash</title>
+    5:   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+    6:   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+    7:   <%= csrf_meta_tags %>
+    8:   <%= yield :title %>
+  app/views/layouts/application.html.erb:5:in `_app_views_layouts_application_html_erb__1832362330481017937_46400040'
+
+
+  Rendered /usr/local/rvm/gems/ruby-2.3.1/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/rescues/_source.erb (9.0ms)
+  Rendered /usr/local/rvm/gems/ruby-2.3.1/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (3.5ms)
+  Rendered /usr/local/rvm/gems/ruby-2.3.1/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.2ms)
+  Rendered /usr/local/rvm/gems/ruby-2.3.1/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout (32.6ms)
+
+
+Started GET "/admin" for 67.86.240.24 at 2017-07-05 22:27:31 +0000
+Cannot render console from 67.86.240.24! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by Admin::DashboardController#index as HTML
+Completed 401 Unauthorized in 5ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/admin/login" for 67.86.240.24 at 2017-07-05 22:27:31 +0000
+Cannot render console from 67.86.240.24! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by ActiveAdmin::Devise::SessionsController#new as HTML
+  Rendered /usr/local/rvm/gems/ruby-2.3.1/bundler/gems/activeadmin-bf37d126a2fc/app/views/active_admin/devise/shared/_links.erb (6.9ms)
+  Rendered /usr/local/rvm/gems/ruby-2.3.1/bundler/gems/activeadmin-bf37d126a2fc/app/views/active_admin/devise/sessions/new.html.erb within layouts/active_admin_logged_out (112.7ms)
+Completed 500 Internal Server Error in 259ms (ActiveRecord: 0.4ms)
+
+ActionView::Template::Error (couldn't find file 'jquery3' with type 'application/javascript'):
+     6:   <title><%= [@page_title, render_or_call_method_or_proc_on(self, ActiveAdmin.application.site_title)].compact.join(" | ") %></title>
+     7: 
+     8:   <% ActiveAdmin.application.stylesheets.each do |style, options| %>
+     9:     <%= stylesheet_link_tag style, options %>
+    10:   <% end %>
+    11:   <% ActiveAdmin.application.javascripts.each do |path| %>
+    12:     <%= javascript_include_tag path %>
+  /usr/local/rvm/gems/ruby-2.3.1/bundler/gems/activeadmin-bf37d126a2fc/app/assets/javascripts/active_admin/base.js.coffee:1
+  sprockets (3.5.2) lib/sprockets/resolve.rb:64:in `resolve!'
+  sprockets (3.5.2) lib/sprockets/directive_processor.rb:399:in `resolve'
+  sprockets (3.5.2) lib/sprockets/directive_processor.rb:207:in `process_require_directive'
+  sprockets (3.5.2) lib/sprockets/directive_processor.rb:180:in `block in process_directives'
+  sprockets (3.5.2) lib/sprockets/directive_processor.rb:178:in `each'
+  sprockets (3.5.2) lib/sprockets/directive_processor.rb:178:in `process_directives'
+  sprockets (3.5.2) lib/sprockets/directive_processor.rb:83:in `_call'
+  sprockets (3.5.2) lib/sprockets/directive_processor.rb:68:in `call'
+  sprockets (3.5.2) lib/sprockets/processor_utils.rb:75:in `call_processor'
+  sprockets (3.5.2) lib/sprockets/processor_utils.rb:57:in `block in call_processors'
+  sprockets (3.5.2) lib/sprockets/processor_utils.rb:56:in `reverse_each'
+  sprockets (3.5.2) lib/sprockets/processor_utils.rb:56:in `call_processors'
+  sprockets (3.5.2) lib/sprockets/loader.rb:134:in `load_from_unloaded'
+  sprockets (3.5.2) lib/sprockets/loader.rb:60:in `block in load'
+  sprockets (3.5.2) lib/sprockets/loader.rb:318:in `fetch_asset_from_dependency_cache'
+  sprockets (3.5.2) lib/sprockets/loader.rb:44:in `load'
+  sprockets (3.5.2) lib/sprockets/cached_environment.rb:20:in `block in initialize'
+  sprockets (3.5.2) lib/sprockets/cached_environment.rb:47:in `load'
+  sprockets (3.5.2) lib/sprockets/bundle.rb:23:in `block in call'
+  sprockets (3.5.2) lib/sprockets/utils.rb:183:in `dfs'
+  sprockets (3.5.2) lib/sprockets/bundle.rb:24:in `call'
+  sprockets (3.5.2) lib/sprockets/processor_utils.rb:75:in `call_processor'
+  sprockets (3.5.2) lib/sprockets/processor_utils.rb:57:in `block in call_processors'
+  sprockets (3.5.2) lib/sprockets/processor_utils.rb:56:in `reverse_each'
+  sprockets (3.5.2) lib/sprockets/processor_utils.rb:56:in `call_processors'
+  sprockets (3.5.2) lib/sprockets/loader.rb:134:in `load_from_unloaded'
+  sprockets (3.5.2) lib/sprockets/loader.rb:60:in `block in load'
+  sprockets (3.5.2) lib/sprockets/loader.rb:318:in `fetch_asset_from_dependency_cache'
+  sprockets (3.5.2) lib/sprockets/loader.rb:44:in `load'
+  sprockets (3.5.2) lib/sprockets/cached_environment.rb:20:in `block in initialize'
+  sprockets (3.5.2) lib/sprockets/cached_environment.rb:47:in `load'
+  sprockets (3.5.2) lib/sprockets/base.rb:66:in `find_asset'
+  sprockets (3.5.2) lib/sprockets/base.rb:73:in `find_all_linked_assets'
+  sprockets (3.5.2) lib/sprockets/manifest.rb:134:in `block in find'
+  sprockets (3.5.2) lib/sprockets/manifest.rb:133:in `each'
+  sprockets (3.5.2) lib/sprockets/manifest.rb:133:in `find'
+  sprockets-rails (3.0.0) lib/sprockets/railtie.rb:41:in `each'
+  sprockets-rails (3.0.0) lib/sprockets/railtie.rb:41:in `map'
+  sprockets-rails (3.0.0) lib/sprockets/railtie.rb:41:in `precompiled_assets'
+  sprockets-rails (3.0.0) lib/sprockets/railtie.rb:34:in `asset_precompiled?'
+  sprockets-rails (3.0.0) lib/sprockets/railtie.rb:205:in `block (3 levels) in <class:Railtie>'
+  sprockets-rails (3.0.0) lib/sprockets/rails/helper.rb:346:in `precompiled?'
+  sprockets-rails (3.0.0) lib/sprockets/rails/helper.rb:350:in `raise_unless_precompiled_asset'
+  sprockets-rails (3.0.0) lib/sprockets/rails/helper.rb:335:in `find_debug_asset'
+  sprockets-rails (3.0.0) lib/sprockets/rails/helper.rb:217:in `block in lookup_debug_asset'
+  sprockets-rails (3.0.0) lib/sprockets/rails/helper.rb:230:in `block in resolve_asset'
+  sprockets-rails (3.0.0) lib/sprockets/rails/helper.rb:229:in `each'
+  sprockets-rails (3.0.0) lib/sprockets/rails/helper.rb:229:in `detect'
+  sprockets-rails (3.0.0) lib/sprockets/rails/helper.rb:229:in `resolve_asset'
+  sprockets-rails (3.0.0) lib/sprockets/rails/helper.rb:216:in `lookup_debug_asset'
+  sprockets-rails (3.0.0) lib/sprockets/rails/helper.rb:158:in `block in stylesheet_link_tag'
+  sprockets-rails (3.0.0) lib/sprockets/rails/helper.rb:157:in `map'
+  sprockets-rails (3.0.0) lib/sprockets/rails/helper.rb:157:in `stylesheet_link_tag'
+  /usr/local/rvm/gems/ruby-2.3.1/bundler/gems/activeadmin-bf37d126a2fc/app/views/layouts/active_admin_logged_out.html.erb:9:in `block in __usr_local_rvm_gems_ruby_______bundler_gems_activeadmin_bf__d___a_fc_app_views_layouts_active_admin_logged_out_html_erb___3498200457190969584_69863339763320'
+  /usr/local/rvm/gems/ruby-2.3.1/bundler/gems/activeadmin-bf37d126a2fc/app/views/layouts/active_admin_logged_out.html.erb:8:in `each'
+  /usr/local/rvm/gems/ruby-2.3.1/bundler/gems/activeadmin-bf37d126a2fc/app/views/layouts/active_admin_logged_out.html.erb:8:in `__usr_local_rvm_gems_ruby_______bundler_gems_activeadmin_bf__d___a_fc_app_views_layouts_active_admin_logged_out_html_erb___3498200457190969584_69863339763320'
+  actionview (4.2.5) lib/action_view/template.rb:145:in `block in render'
+  activesupport (4.2.5) lib/active_support/notifications.rb:166:in `instrument'
+  actionview (4.2.5) lib/action_view/template.rb:333:in `instrument'
+  actionview (4.2.5) lib/action_view/template.rb:143:in `render'
+  actionview (4.2.5) lib/action_view/renderer/template_renderer.rb:66:in `render_with_layout'
+  actionview (4.2.5) lib/action_view/renderer/template_renderer.rb:52:in `render_template'
+  actionview (4.2.5) lib/action_view/renderer/template_renderer.rb:14:in `render'
+  actionview (4.2.5) lib/action_view/renderer/renderer.rb:42:in `render_template'
+  actionview (4.2.5) lib/action_view/renderer/renderer.rb:23:in `render'
+  actionview (4.2.5) lib/action_view/rendering.rb:100:in `_render_template'
+  actionpack (4.2.5) lib/action_controller/metal/streaming.rb:217:in `_render_template'
+  actionview (4.2.5) lib/action_view/rendering.rb:83:in `render_to_body'
+  actionpack (4.2.5) lib/action_controller/metal/rendering.rb:32:in `render_to_body'
+  actionpack (4.2.5) lib/action_controller/metal/renderers.rb:37:in `render_to_body'
+  actionpack (4.2.5) lib/abstract_controller/rendering.rb:25:in `render'
+  actionpack (4.2.5) lib/action_controller/metal/rendering.rb:16:in `render'
+  actionpack (4.2.5) lib/action_controller/metal/instrumentation.rb:44:in `block (2 levels) in render'
+  activesupport (4.2.5) lib/active_support/core_ext/benchmark.rb:12:in `block in ms'
+  /usr/local/rvm/rubies/ruby-2.3.1/lib/ruby/2.3.0/benchmark.rb:308:in `realtime'
+  activesupport (4.2.5) lib/active_support/core_ext/benchmark.rb:12:in `ms'
+  actionpack (4.2.5) lib/action_controller/metal/instrumentation.rb:44:in `block in render'
+  actionpack (4.2.5) lib/action_controller/metal/instrumentation.rb:87:in `cleanup_view_runtime'
+  activerecord (4.2.5) lib/active_record/railties/controller_runtime.rb:25:in `cleanup_view_runtime'
+  actionpack (4.2.5) lib/action_controller/metal/instrumentation.rb:43:in `render'
+  responders (2.1.1) lib/action_controller/responder.rb:236:in `default_render'
+  responders (2.1.1) lib/action_controller/responder.rb:170:in `to_html'
+  responders (2.1.1) lib/action_controller/responder.rb:163:in `respond'
+  responders (2.1.1) lib/action_controller/responder.rb:156:in `call'
+  responders (2.1.1) lib/action_controller/respond_with.rb:205:in `respond_with'
+  devise (3.5.6) app/controllers/devise/sessions_controller.rb:12:in `new'
+  actionpack (4.2.5) lib/action_controller/metal/implicit_render.rb:4:in `send_action'
+  actionpack (4.2.5) lib/abstract_controller/base.rb:198:in `process_action'
+  actionpack (4.2.5) lib/action_controller/metal/rendering.rb:10:in `process_action'
+  actionpack (4.2.5) lib/abstract_controller/callbacks.rb:20:in `block in process_action'
+  activesupport (4.2.5) lib/active_support/callbacks.rb:117:in `call'
+  activesupport (4.2.5) lib/active_support/callbacks.rb:555:in `block (2 levels) in compile'
+  activesupport (4.2.5) lib/active_support/callbacks.rb:505:in `call'
+  activesupport (4.2.5) lib/active_support/callbacks.rb:92:in `__run_callbacks__'
+  activesupport (4.2.5) lib/active_support/callbacks.rb:778:in `_run_process_action_callbacks'
+  activesupport (4.2.5) lib/active_support/callbacks.rb:81:in `run_callbacks'
+  actionpack (4.2.5) lib/abstract_controller/callbacks.rb:19:in `process_action'
+  actionpack (4.2.5) lib/action_controller/metal/rescue.rb:29:in `process_action'
+  actionpack (4.2.5) lib/action_controller/metal/instrumentation.rb:32:in `block in process_action'
+  activesupport (4.2.5) lib/active_support/notifications.rb:164:in `block in instrument'
+  activesupport (4.2.5) lib/active_support/notifications/instrumenter.rb:20:in `instrument'
+  activesupport (4.2.5) lib/active_support/notifications.rb:164:in `instrument'
+  actionpack (4.2.5) lib/action_controller/metal/instrumentation.rb:30:in `process_action'
+  actionpack (4.2.5) lib/action_controller/metal/params_wrapper.rb:250:in `process_action'
+  activerecord (4.2.5) lib/active_record/railties/controller_runtime.rb:18:in `process_action'
+  actionpack (4.2.5) lib/abstract_controller/base.rb:137:in `process'
+  actionview (4.2.5) lib/action_view/rendering.rb:30:in `process'
+  actionpack (4.2.5) lib/action_controller/metal.rb:196:in `dispatch'
+  actionpack (4.2.5) lib/action_controller/metal/rack_delegation.rb:13:in `dispatch'
+  actionpack (4.2.5) lib/action_controller/metal.rb:237:in `block in action'
+  actionpack (4.2.5) lib/action_dispatch/routing/route_set.rb:76:in `dispatch'
+  actionpack (4.2.5) lib/action_dispatch/routing/route_set.rb:45:in `serve'
+  actionpack (4.2.5) lib/action_dispatch/routing/mapper.rb:49:in `serve'
+  actionpack (4.2.5) lib/action_dispatch/journey/router.rb:43:in `block in serve'
+  actionpack (4.2.5) lib/action_dispatch/journey/router.rb:30:in `each'
+  actionpack (4.2.5) lib/action_dispatch/journey/router.rb:30:in `serve'
+  actionpack (4.2.5) lib/action_dispatch/routing/route_set.rb:817:in `call'
+  warden (1.2.6) lib/warden/manager.rb:35:in `block in call'
+  warden (1.2.6) lib/warden/manager.rb:34:in `catch'
+  warden (1.2.6) lib/warden/manager.rb:34:in `call'
+  rack (1.6.4) lib/rack/etag.rb:24:in `call'
+  rack (1.6.4) lib/rack/conditionalget.rb:25:in `call'
+  rack (1.6.4) lib/rack/head.rb:13:in `call'
+  actionpack (4.2.5) lib/action_dispatch/middleware/params_parser.rb:27:in `call'
+  actionpack (4.2.5) lib/action_dispatch/middleware/flash.rb:260:in `call'
+  rack (1.6.4) lib/rack/session/abstract/id.rb:225:in `context'
+  rack (1.6.4) lib/rack/session/abstract/id.rb:220:in `call'
+  actionpack (4.2.5) lib/action_dispatch/middleware/cookies.rb:560:in `call'
+  activerecord (4.2.5) lib/active_record/query_cache.rb:36:in `call'
+  activerecord (4.2.5) lib/active_record/connection_adapters/abstract/connection_pool.rb:653:in `call'
+  activerecord (4.2.5) lib/active_record/migration.rb:377:in `call'
+  actionpack (4.2.5) lib/action_dispatch/middleware/callbacks.rb:29:in `block in call'
+  activesupport (4.2.5) lib/active_support/callbacks.rb:88:in `__run_callbacks__'
+  activesupport (4.2.5) lib/active_support/callbacks.rb:778:in `_run_call_callbacks'
+  activesupport (4.2.5) lib/active_support/callbacks.rb:81:in `run_callbacks'
+  actionpack (4.2.5) lib/action_dispatch/middleware/callbacks.rb:27:in `call'
+  actionpack (4.2.5) lib/action_dispatch/middleware/reloader.rb:73:in `call'
+  actionpack (4.2.5) lib/action_dispatch/middleware/remote_ip.rb:78:in `call'
+  actionpack (4.2.5) lib/action_dispatch/middleware/debug_exceptions.rb:17:in `call'
+  web-console (2.2.1) lib/web_console/middleware.rb:31:in `call'
+  actionpack (4.2.5) lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+  railties (4.2.5) lib/rails/rack/logger.rb:38:in `call_app'
+  railties (4.2.5) lib/rails/rack/logger.rb:20:in `block in call'
+  activesupport (4.2.5) lib/active_support/tagged_logging.rb:68:in `block in tagged'
+  activesupport (4.2.5) lib/active_support/tagged_logging.rb:26:in `tagged'
+  activesupport (4.2.5) lib/active_support/tagged_logging.rb:68:in `tagged'
+  railties (4.2.5) lib/rails/rack/logger.rb:20:in `call'
+  actionpack (4.2.5) lib/action_dispatch/middleware/request_id.rb:21:in `call'
+  rack (1.6.4) lib/rack/methodoverride.rb:22:in `call'
+  rack (1.6.4) lib/rack/runtime.rb:18:in `call'
+  activesupport (4.2.5) lib/active_support/cache/strategy/local_cache_middleware.rb:28:in `call'
+  rack (1.6.4) lib/rack/lock.rb:17:in `call'
+  actionpack (4.2.5) lib/action_dispatch/middleware/static.rb:116:in `call'
+  rack (1.6.4) lib/rack/sendfile.rb:113:in `call'
+  railties (4.2.5) lib/rails/engine.rb:518:in `call'
+  railties (4.2.5) lib/rails/application.rb:165:in `call'
+  rack (1.6.4) lib/rack/lock.rb:17:in `call'
+  rack (1.6.4) lib/rack/content_length.rb:15:in `call'
+  rack (1.6.4) lib/rack/handler/webrick.rb:88:in `service'
+  /usr/local/rvm/rubies/ruby-2.3.1/lib/ruby/2.3.0/webrick/httpserver.rb:140:in `service'
+  /usr/local/rvm/rubies/ruby-2.3.1/lib/ruby/2.3.0/webrick/httpserver.rb:96:in `run'
+  /usr/local/rvm/rubies/ruby-2.3.1/lib/ruby/2.3.0/webrick/server.rb:296:in `block in start_thread'
+
+
+  Rendered /usr/local/rvm/gems/ruby-2.3.1/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/rescues/_source.erb (57.6ms)
+  Rendered /usr/local/rvm/gems/ruby-2.3.1/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (3.7ms)
+  Rendered /usr/local/rvm/gems/ruby-2.3.1/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.1ms)
+  Rendered /usr/local/rvm/gems/ruby-2.3.1/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout (80.1ms)
+
+
+Started GET "/" for 73.188.0.118 at 2017-07-05 22:27:47 +0000
+Cannot render console from 73.188.0.118! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by PostsController#index as HTML
+  [1m[35mPost Load (0.4ms)[0m  SELECT "posts".* FROM "posts"
+  [1m[36mAuthor Load (0.1ms)[0m  [1mSELECT  "authors".* FROM "authors" WHERE "authors"."id" = ? LIMIT 1[0m  [["id", 4]]
+  [1m[35mAuthor Load (0.1ms)[0m  SELECT  "authors".* FROM "authors" WHERE "authors"."id" = ? LIMIT 1  [["id", 5]]
+  [1m[36mAuthor Load (0.1ms)[0m  [1mSELECT  "authors".* FROM "authors" WHERE "authors"."id" = ? LIMIT 1[0m  [["id", 6]]
+  Rendered posts/index.html.erb within layouts/application (6.0ms)
+Completed 500 Internal Server Error in 43ms (ActiveRecord: 0.8ms)
+
+ActionView::Template::Error (couldn't find file 'jquery3' with type 'application/javascript'):
+    2: <html>
+    3: <head>
+    4:   <title>BlogFlash</title>
+    5:   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+    6:   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+    7:   <%= csrf_meta_tags %>
+    8:   <%= yield :title %>
+  app/views/layouts/application.html.erb:5:in `_app_views_layouts_application_html_erb__1832362330481017937_46400040'
+
+
+  Rendered /usr/local/rvm/gems/ruby-2.3.1/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/rescues/_source.erb (9.7ms)
+  Rendered /usr/local/rvm/gems/ruby-2.3.1/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (3.9ms)
+  Rendered /usr/local/rvm/gems/ruby-2.3.1/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.6ms)
+  Rendered /usr/local/rvm/gems/ruby-2.3.1/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout (83.4ms)
+
+
+Started GET "/admin/login" for 67.86.240.24 at 2017-07-05 22:28:59 +0000
+Cannot render console from 67.86.240.24! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+  [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by ActiveAdmin::Devise::SessionsController#new as HTML
+  Rendered /usr/local/rvm/gems/ruby-2.3.1/bundler/gems/activeadmin-bf37d126a2fc/app/views/active_admin/devise/shared/_links.erb (57.6ms)
+  Rendered /usr/local/rvm/gems/ruby-2.3.1/bundler/gems/activeadmin-bf37d126a2fc/app/views/active_admin/devise/sessions/new.html.erb within layouts/active_admin_logged_out (253.1ms)
+Completed 500 Internal Server Error in 3224ms (ActiveRecord: 0.6ms)
+
+ActionView::Template::Error (couldn't find file 'jquery3' with type 'application/javascript'):
+     6:   <title><%= [@page_title, render_or_call_method_or_proc_on(self, ActiveAdmin.application.site_title)].compact.join(" | ") %></title>
+     7: 
+     8:   <% ActiveAdmin.application.stylesheets.each do |style, options| %>
+     9:     <%= stylesheet_link_tag style, options %>
+    10:   <% end %>
+    11:   <% ActiveAdmin.application.javascripts.each do |path| %>
+    12:     <%= javascript_include_tag path %>
+  /usr/local/rvm/gems/ruby-2.3.1/bundler/gems/activeadmin-bf37d126a2fc/app/assets/javascripts/active_admin/base.js.coffee:1
+  sprockets (3.5.2) lib/sprockets/resolve.rb:64:in `resolve!'
+  sprockets (3.5.2) lib/sprockets/directive_processor.rb:399:in `resolve'
+  sprockets (3.5.2) lib/sprockets/directive_processor.rb:207:in `process_require_directive'
+  sprockets (3.5.2) lib/sprockets/directive_processor.rb:180:in `block in process_directives'
+  sprockets (3.5.2) lib/sprockets/directive_processor.rb:178:in `each'
+  sprockets (3.5.2) lib/sprockets/directive_processor.rb:178:in `process_directives'
+  sprockets (3.5.2) lib/sprockets/directive_processor.rb:83:in `_call'
+  sprockets (3.5.2) lib/sprockets/directive_processor.rb:68:in `call'
+  sprockets (3.5.2) lib/sprockets/processor_utils.rb:75:in `call_processor'
+  sprockets (3.5.2) lib/sprockets/processor_utils.rb:57:in `block in call_processors'
+  sprockets (3.5.2) lib/sprockets/processor_utils.rb:56:in `reverse_each'
+  sprockets (3.5.2) lib/sprockets/processor_utils.rb:56:in `call_processors'
+  sprockets (3.5.2) lib/sprockets/loader.rb:134:in `load_from_unloaded'
+  sprockets (3.5.2) lib/sprockets/loader.rb:60:in `block in load'
+  sprockets (3.5.2) lib/sprockets/loader.rb:318:in `fetch_asset_from_dependency_cache'
+  sprockets (3.5.2) lib/sprockets/loader.rb:44:in `load'
+  sprockets (3.5.2) lib/sprockets/cached_environment.rb:20:in `block in initialize'
+  sprockets (3.5.2) lib/sprockets/cached_environment.rb:47:in `load'
+  sprockets (3.5.2) lib/sprockets/bundle.rb:23:in `block in call'
+  sprockets (3.5.2) lib/sprockets/utils.rb:183:in `dfs'
+  sprockets (3.5.2) lib/sprockets/bundle.rb:24:in `call'
+  sprockets (3.5.2) lib/sprockets/processor_utils.rb:75:in `call_processor'
+  sprockets (3.5.2) lib/sprockets/processor_utils.rb:57:in `block in call_processors'
+  sprockets (3.5.2) lib/sprockets/processor_utils.rb:56:in `reverse_each'
+  sprockets (3.5.2) lib/sprockets/processor_utils.rb:56:in `call_processors'
+  sprockets (3.5.2) lib/sprockets/loader.rb:134:in `load_from_unloaded'
+  sprockets (3.5.2) lib/sprockets/loader.rb:60:in `block in load'
+  sprockets (3.5.2) lib/sprockets/loader.rb:318:in `fetch_asset_from_dependency_cache'
+  sprockets (3.5.2) lib/sprockets/loader.rb:44:in `load'
+  sprockets (3.5.2) lib/sprockets/cached_environment.rb:20:in `block in initialize'
+  sprockets (3.5.2) lib/sprockets/cached_environment.rb:47:in `load'
+  sprockets (3.5.2) lib/sprockets/base.rb:66:in `find_asset'
+  sprockets (3.5.2) lib/sprockets/base.rb:73:in `find_all_linked_assets'
+  sprockets (3.5.2) lib/sprockets/manifest.rb:134:in `block in find'
+  sprockets (3.5.2) lib/sprockets/manifest.rb:133:in `each'
+  sprockets (3.5.2) lib/sprockets/manifest.rb:133:in `find'
+  sprockets-rails (3.0.0) lib/sprockets/railtie.rb:41:in `each'
+  sprockets-rails (3.0.0) lib/sprockets/railtie.rb:41:in `map'
+  sprockets-rails (3.0.0) lib/sprockets/railtie.rb:41:in `precompiled_assets'
+  sprockets-rails (3.0.0) lib/sprockets/railtie.rb:34:in `asset_precompiled?'
+  sprockets-rails (3.0.0) lib/sprockets/railtie.rb:205:in `block (3 levels) in <class:Railtie>'
+  sprockets-rails (3.0.0) lib/sprockets/rails/helper.rb:346:in `precompiled?'
+  sprockets-rails (3.0.0) lib/sprockets/rails/helper.rb:350:in `raise_unless_precompiled_asset'
+  sprockets-rails (3.0.0) lib/sprockets/rails/helper.rb:335:in `find_debug_asset'
+  sprockets-rails (3.0.0) lib/sprockets/rails/helper.rb:217:in `block in lookup_debug_asset'
+  sprockets-rails (3.0.0) lib/sprockets/rails/helper.rb:230:in `block in resolve_asset'
+  sprockets-rails (3.0.0) lib/sprockets/rails/helper.rb:229:in `each'
+  sprockets-rails (3.0.0) lib/sprockets/rails/helper.rb:229:in `detect'
+  sprockets-rails (3.0.0) lib/sprockets/rails/helper.rb:229:in `resolve_asset'
+  sprockets-rails (3.0.0) lib/sprockets/rails/helper.rb:216:in `lookup_debug_asset'
+  sprockets-rails (3.0.0) lib/sprockets/rails/helper.rb:158:in `block in stylesheet_link_tag'
+  sprockets-rails (3.0.0) lib/sprockets/rails/helper.rb:157:in `map'
+  sprockets-rails (3.0.0) lib/sprockets/rails/helper.rb:157:in `stylesheet_link_tag'
+  /usr/local/rvm/gems/ruby-2.3.1/bundler/gems/activeadmin-bf37d126a2fc/app/views/layouts/active_admin_logged_out.html.erb:9:in `block in __usr_local_rvm_gems_ruby_______bundler_gems_activeadmin_bf__d___a_fc_app_views_layouts_active_admin_logged_out_html_erb___2579269273631839554_38653400'
+  /usr/local/rvm/gems/ruby-2.3.1/bundler/gems/activeadmin-bf37d126a2fc/app/views/layouts/active_admin_logged_out.html.erb:8:in `each'
+  /usr/local/rvm/gems/ruby-2.3.1/bundler/gems/activeadmin-bf37d126a2fc/app/views/layouts/active_admin_logged_out.html.erb:8:in `__usr_local_rvm_gems_ruby_______bundler_gems_activeadmin_bf__d___a_fc_app_views_layouts_active_admin_logged_out_html_erb___2579269273631839554_38653400'
+  actionview (4.2.5) lib/action_view/template.rb:145:in `block in render'
+  activesupport (4.2.5) lib/active_support/notifications.rb:166:in `instrument'
+  actionview (4.2.5) lib/action_view/template.rb:333:in `instrument'
+  actionview (4.2.5) lib/action_view/template.rb:143:in `render'
+  actionview (4.2.5) lib/action_view/renderer/template_renderer.rb:66:in `render_with_layout'
+  actionview (4.2.5) lib/action_view/renderer/template_renderer.rb:52:in `render_template'
+  actionview (4.2.5) lib/action_view/renderer/template_renderer.rb:14:in `render'
+  actionview (4.2.5) lib/action_view/renderer/renderer.rb:42:in `render_template'
+  actionview (4.2.5) lib/action_view/renderer/renderer.rb:23:in `render'
+  actionview (4.2.5) lib/action_view/rendering.rb:100:in `_render_template'
+  actionpack (4.2.5) lib/action_controller/metal/streaming.rb:217:in `_render_template'
+  actionview (4.2.5) lib/action_view/rendering.rb:83:in `render_to_body'
+  actionpack (4.2.5) lib/action_controller/metal/rendering.rb:32:in `render_to_body'
+  actionpack (4.2.5) lib/action_controller/metal/renderers.rb:37:in `render_to_body'
+  actionpack (4.2.5) lib/abstract_controller/rendering.rb:25:in `render'
+  actionpack (4.2.5) lib/action_controller/metal/rendering.rb:16:in `render'
+  actionpack (4.2.5) lib/action_controller/metal/instrumentation.rb:44:in `block (2 levels) in render'
+  activesupport (4.2.5) lib/active_support/core_ext/benchmark.rb:12:in `block in ms'
+  /usr/local/rvm/rubies/ruby-2.3.1/lib/ruby/2.3.0/benchmark.rb:308:in `realtime'
+  activesupport (4.2.5) lib/active_support/core_ext/benchmark.rb:12:in `ms'
+  actionpack (4.2.5) lib/action_controller/metal/instrumentation.rb:44:in `block in render'
+  actionpack (4.2.5) lib/action_controller/metal/instrumentation.rb:87:in `cleanup_view_runtime'
+  activerecord (4.2.5) lib/active_record/railties/controller_runtime.rb:25:in `cleanup_view_runtime'
+  actionpack (4.2.5) lib/action_controller/metal/instrumentation.rb:43:in `render'
+  responders (2.1.1) lib/action_controller/responder.rb:236:in `default_render'
+  responders (2.1.1) lib/action_controller/responder.rb:170:in `to_html'
+  responders (2.1.1) lib/action_controller/responder.rb:163:in `respond'
+  responders (2.1.1) lib/action_controller/responder.rb:156:in `call'
+  responders (2.1.1) lib/action_controller/respond_with.rb:205:in `respond_with'
+  devise (3.5.6) app/controllers/devise/sessions_controller.rb:12:in `new'
+  actionpack (4.2.5) lib/action_controller/metal/implicit_render.rb:4:in `send_action'
+  actionpack (4.2.5) lib/abstract_controller/base.rb:198:in `process_action'
+  actionpack (4.2.5) lib/action_controller/metal/rendering.rb:10:in `process_action'
+  actionpack (4.2.5) lib/abstract_controller/callbacks.rb:20:in `block in process_action'
+  activesupport (4.2.5) lib/active_support/callbacks.rb:117:in `call'
+  activesupport (4.2.5) lib/active_support/callbacks.rb:555:in `block (2 levels) in compile'
+  activesupport (4.2.5) lib/active_support/callbacks.rb:505:in `call'
+  activesupport (4.2.5) lib/active_support/callbacks.rb:92:in `__run_callbacks__'
+  activesupport (4.2.5) lib/active_support/callbacks.rb:778:in `_run_process_action_callbacks'
+  activesupport (4.2.5) lib/active_support/callbacks.rb:81:in `run_callbacks'
+  actionpack (4.2.5) lib/abstract_controller/callbacks.rb:19:in `process_action'
+  actionpack (4.2.5) lib/action_controller/metal/rescue.rb:29:in `process_action'
+  actionpack (4.2.5) lib/action_controller/metal/instrumentation.rb:32:in `block in process_action'
+  activesupport (4.2.5) lib/active_support/notifications.rb:164:in `block in instrument'
+  activesupport (4.2.5) lib/active_support/notifications/instrumenter.rb:20:in `instrument'
+  activesupport (4.2.5) lib/active_support/notifications.rb:164:in `instrument'
+  actionpack (4.2.5) lib/action_controller/metal/instrumentation.rb:30:in `process_action'
+  actionpack (4.2.5) lib/action_controller/metal/params_wrapper.rb:250:in `process_action'
+  activerecord (4.2.5) lib/active_record/railties/controller_runtime.rb:18:in `process_action'
+  actionpack (4.2.5) lib/abstract_controller/base.rb:137:in `process'
+  actionview (4.2.5) lib/action_view/rendering.rb:30:in `process'
+  actionpack (4.2.5) lib/action_controller/metal.rb:196:in `dispatch'
+  actionpack (4.2.5) lib/action_controller/metal/rack_delegation.rb:13:in `dispatch'
+  actionpack (4.2.5) lib/action_controller/metal.rb:237:in `block in action'
+  actionpack (4.2.5) lib/action_dispatch/routing/route_set.rb:76:in `dispatch'
+  actionpack (4.2.5) lib/action_dispatch/routing/route_set.rb:45:in `serve'
+  actionpack (4.2.5) lib/action_dispatch/routing/mapper.rb:49:in `serve'
+  actionpack (4.2.5) lib/action_dispatch/journey/router.rb:43:in `block in serve'
+  actionpack (4.2.5) lib/action_dispatch/journey/router.rb:30:in `each'
+  actionpack (4.2.5) lib/action_dispatch/journey/router.rb:30:in `serve'
+  actionpack (4.2.5) lib/action_dispatch/routing/route_set.rb:817:in `call'
+  warden (1.2.6) lib/warden/manager.rb:35:in `block in call'
+  warden (1.2.6) lib/warden/manager.rb:34:in `catch'
+  warden (1.2.6) lib/warden/manager.rb:34:in `call'
+  rack (1.6.4) lib/rack/etag.rb:24:in `call'
+  rack (1.6.4) lib/rack/conditionalget.rb:25:in `call'
+  rack (1.6.4) lib/rack/head.rb:13:in `call'
+  actionpack (4.2.5) lib/action_dispatch/middleware/params_parser.rb:27:in `call'
+  actionpack (4.2.5) lib/action_dispatch/middleware/flash.rb:260:in `call'
+  rack (1.6.4) lib/rack/session/abstract/id.rb:225:in `context'
+  rack (1.6.4) lib/rack/session/abstract/id.rb:220:in `call'
+  actionpack (4.2.5) lib/action_dispatch/middleware/cookies.rb:560:in `call'
+  activerecord (4.2.5) lib/active_record/query_cache.rb:36:in `call'
+  activerecord (4.2.5) lib/active_record/connection_adapters/abstract/connection_pool.rb:653:in `call'
+  activerecord (4.2.5) lib/active_record/migration.rb:377:in `call'
+  actionpack (4.2.5) lib/action_dispatch/middleware/callbacks.rb:29:in `block in call'
+  activesupport (4.2.5) lib/active_support/callbacks.rb:88:in `__run_callbacks__'
+  activesupport (4.2.5) lib/active_support/callbacks.rb:778:in `_run_call_callbacks'
+  activesupport (4.2.5) lib/active_support/callbacks.rb:81:in `run_callbacks'
+  actionpack (4.2.5) lib/action_dispatch/middleware/callbacks.rb:27:in `call'
+  actionpack (4.2.5) lib/action_dispatch/middleware/reloader.rb:73:in `call'
+  actionpack (4.2.5) lib/action_dispatch/middleware/remote_ip.rb:78:in `call'
+  actionpack (4.2.5) lib/action_dispatch/middleware/debug_exceptions.rb:17:in `call'
+  web-console (2.2.1) lib/web_console/middleware.rb:31:in `call'
+  actionpack (4.2.5) lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+  railties (4.2.5) lib/rails/rack/logger.rb:38:in `call_app'
+  railties (4.2.5) lib/rails/rack/logger.rb:20:in `block in call'
+  activesupport (4.2.5) lib/active_support/tagged_logging.rb:68:in `block in tagged'
+  activesupport (4.2.5) lib/active_support/tagged_logging.rb:26:in `tagged'
+  activesupport (4.2.5) lib/active_support/tagged_logging.rb:68:in `tagged'
+  railties (4.2.5) lib/rails/rack/logger.rb:20:in `call'
+  actionpack (4.2.5) lib/action_dispatch/middleware/request_id.rb:21:in `call'
+  rack (1.6.4) lib/rack/methodoverride.rb:22:in `call'
+  rack (1.6.4) lib/rack/runtime.rb:18:in `call'
+  activesupport (4.2.5) lib/active_support/cache/strategy/local_cache_middleware.rb:28:in `call'
+  rack (1.6.4) lib/rack/lock.rb:17:in `call'
+  actionpack (4.2.5) lib/action_dispatch/middleware/static.rb:116:in `call'
+  rack (1.6.4) lib/rack/sendfile.rb:113:in `call'
+  railties (4.2.5) lib/rails/engine.rb:518:in `call'
+  railties (4.2.5) lib/rails/application.rb:165:in `call'
+  rack (1.6.4) lib/rack/lock.rb:17:in `call'
+  rack (1.6.4) lib/rack/content_length.rb:15:in `call'
+  rack (1.6.4) lib/rack/handler/webrick.rb:88:in `service'
+  /usr/local/rvm/rubies/ruby-2.3.1/lib/ruby/2.3.0/webrick/httpserver.rb:140:in `service'
+  /usr/local/rvm/rubies/ruby-2.3.1/lib/ruby/2.3.0/webrick/httpserver.rb:96:in `run'
+  /usr/local/rvm/rubies/ruby-2.3.1/lib/ruby/2.3.0/webrick/server.rb:296:in `block in start_thread'
+
+
+  Rendered /usr/local/rvm/gems/ruby-2.3.1/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/rescues/_source.erb (56.9ms)
+  Rendered /usr/local/rvm/gems/ruby-2.3.1/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (3.7ms)
+  Rendered /usr/local/rvm/gems/ruby-2.3.1/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.1ms)
+  Rendered /usr/local/rvm/gems/ruby-2.3.1/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout (80.1ms)
+
+
+Started GET "/" for 67.86.240.24 at 2017-07-05 22:30:27 +0000
+Cannot render console from 67.86.240.24! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by PostsController#index as HTML
+  [1m[35mPost Load (0.4ms)[0m  SELECT "posts".* FROM "posts"
+  [1m[36mAuthor Load (0.2ms)[0m  [1mSELECT  "authors".* FROM "authors" WHERE "authors"."id" = ? LIMIT 1[0m  [["id", 4]]
+  [1m[35mAuthor Load (0.1ms)[0m  SELECT  "authors".* FROM "authors" WHERE "authors"."id" = ? LIMIT 1  [["id", 5]]
+  [1m[36mAuthor Load (0.1ms)[0m  [1mSELECT  "authors".* FROM "authors" WHERE "authors"."id" = ? LIMIT 1[0m  [["id", 6]]
+  Rendered posts/index.html.erb within layouts/application (31.6ms)
+Completed 500 Internal Server Error in 137ms (ActiveRecord: 1.5ms)
+
+ActionView::Template::Error (couldn't find file 'jquery3' with type 'application/javascript'):
+    2: <html>
+    3: <head>
+    4:   <title>BlogFlash</title>
+    5:   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+    6:   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+    7:   <%= csrf_meta_tags %>
+    8:   <%= yield :title %>
+  app/views/layouts/application.html.erb:5:in `_app_views_layouts_application_html_erb___492225161017721259_69881621038700'
+
+
+  Rendered /usr/local/rvm/gems/ruby-2.3.1/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/rescues/_source.erb (70.1ms)
+  Rendered /usr/local/rvm/gems/ruby-2.3.1/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (6.7ms)
+  Rendered /usr/local/rvm/gems/ruby-2.3.1/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.7ms)
+  Rendered /usr/local/rvm/gems/ruby-2.3.1/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout (104.5ms)
+
+
+Started GET "/" for 67.86.240.24 at 2017-07-05 22:41:51 +0000
+Cannot render console from 67.86.240.24! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by PostsController#index as HTML
+  [1m[35mPost Load (0.2ms)[0m  SELECT "posts".* FROM "posts"
+  [1m[36mAuthor Load (0.3ms)[0m  [1mSELECT  "authors".* FROM "authors" WHERE "authors"."id" = ? LIMIT 1[0m  [["id", 4]]
+  [1m[35mAuthor Load (0.1ms)[0m  SELECT  "authors".* FROM "authors" WHERE "authors"."id" = ? LIMIT 1  [["id", 5]]
+  [1m[36mAuthor Load (0.1ms)[0m  [1mSELECT  "authors".* FROM "authors" WHERE "authors"."id" = ? LIMIT 1[0m  [["id", 6]]
+  Rendered posts/index.html.erb within layouts/application (30.0ms)
+Completed 500 Internal Server Error in 767ms (ActiveRecord: 1.4ms)
+
+ActionView::Template::Error (couldn't find file 'jquery3' with type 'application/javascript'):
+    2: <html>
+    3: <head>
+    4:   <title>BlogFlash</title>
+    5:   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+    6:   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+    7:   <%= csrf_meta_tags %>
+    8:   <%= yield :title %>
+  app/views/layouts/application.html.erb:5:in `_app_views_layouts_application_html_erb___878602554372431376_50198300'
+
+
+  Rendered /usr/local/rvm/gems/ruby-2.3.1/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/rescues/_source.erb (18.5ms)
+  Rendered /usr/local/rvm/gems/ruby-2.3.1/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (56.3ms)
+  Rendered /usr/local/rvm/gems/ruby-2.3.1/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (2.0ms)
+  Rendered /usr/local/rvm/gems/ruby-2.3.1/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout (106.9ms)
+
+
+Started GET "/" for 67.86.240.24 at 2017-07-05 22:41:55 +0000
+Cannot render console from 67.86.240.24! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by PostsController#index as HTML
+  [1m[35mPost Load (0.2ms)[0m  SELECT "posts".* FROM "posts"
+  [1m[36mAuthor Load (0.1ms)[0m  [1mSELECT  "authors".* FROM "authors" WHERE "authors"."id" = ? LIMIT 1[0m  [["id", 4]]
+  [1m[35mAuthor Load (0.1ms)[0m  SELECT  "authors".* FROM "authors" WHERE "authors"."id" = ? LIMIT 1  [["id", 5]]
+  [1m[36mAuthor Load (0.1ms)[0m  [1mSELECT  "authors".* FROM "authors" WHERE "authors"."id" = ? LIMIT 1[0m  [["id", 6]]
+  Rendered posts/index.html.erb within layouts/application (12.9ms)
+Completed 500 Internal Server Error in 58ms (ActiveRecord: 0.6ms)
+
+ActionView::Template::Error (couldn't find file 'jquery3' with type 'application/javascript'):
+    2: <html>
+    3: <head>
+    4:   <title>BlogFlash</title>
+    5:   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+    6:   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+    7:   <%= csrf_meta_tags %>
+    8:   <%= yield :title %>
+  app/views/layouts/application.html.erb:5:in `_app_views_layouts_application_html_erb___878602554372431376_50198300'
+
+
+  Rendered /usr/local/rvm/gems/ruby-2.3.1/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/rescues/_source.erb (8.6ms)
+  Rendered /usr/local/rvm/gems/ruby-2.3.1/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (3.4ms)
+  Rendered /usr/local/rvm/gems/ruby-2.3.1/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.3ms)
+  Rendered /usr/local/rvm/gems/ruby-2.3.1/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout (78.8ms)
+
+
+Started GET "/" for 67.86.240.24 at 2017-07-05 22:44:25 +0000
+Cannot render console from 67.86.240.24! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by PostsController#index as HTML
+  [1m[35mPost Load (0.2ms)[0m  SELECT "posts".* FROM "posts"
+  [1m[36mAuthor Load (0.4ms)[0m  [1mSELECT  "authors".* FROM "authors" WHERE "authors"."id" = ? LIMIT 1[0m  [["id", 4]]
+  [1m[35mAuthor Load (0.2ms)[0m  SELECT  "authors".* FROM "authors" WHERE "authors"."id" = ? LIMIT 1  [["id", 5]]
+  [1m[36mAuthor Load (0.1ms)[0m  [1mSELECT  "authors".* FROM "authors" WHERE "authors"."id" = ? LIMIT 1[0m  [["id", 6]]
+  Rendered posts/index.html.erb within layouts/application (85.2ms)
+Completed 500 Internal Server Error in 13303ms (ActiveRecord: 1.8ms)
+
+ActionView::Template::Error ():
+    2: <html>
+    3: <head>
+    4:   <title>BlogFlash</title>
+    5:   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+    6:   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+    7:   <%= csrf_meta_tags %>
+    8:   <%= yield :title %>
+  app/views/layouts/application.html.erb:5:in `_app_views_layouts_application_html_erb___2365607484085457601_43081140'
+
+
+  Rendered /usr/local/rvm/gems/ruby-2.3.1/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/rescues/_source.erb (67.8ms)
+  Rendered /usr/local/rvm/gems/ruby-2.3.1/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (8.7ms)
+  Rendered /usr/local/rvm/gems/ruby-2.3.1/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (2.6ms)
+  Rendered /usr/local/rvm/gems/ruby-2.3.1/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout (104.5ms)
+
+
+Started GET "/" for 67.86.240.24 at 2017-07-05 22:45:03 +0000
+Cannot render console from 67.86.240.24! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+  [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by PostsController#index as HTML
+  [1m[35mPost Load (0.3ms)[0m  SELECT "posts".* FROM "posts"
+  [1m[36mAuthor Load (0.2ms)[0m  [1mSELECT  "authors".* FROM "authors" WHERE "authors"."id" = ? LIMIT 1[0m  [["id", 4]]
+  [1m[35mAuthor Load (0.1ms)[0m  SELECT  "authors".* FROM "authors" WHERE "authors"."id" = ? LIMIT 1  [["id", 5]]
+  [1m[36mAuthor Load (0.1ms)[0m  [1mSELECT  "authors".* FROM "authors" WHERE "authors"."id" = ? LIMIT 1[0m  [["id", 6]]
+  Rendered posts/index.html.erb within layouts/application (32.3ms)
+Completed 200 OK in 4589ms (Views: 4574.0ms | ActiveRecord: 1.4ms)
+
+
+Started GET "/assets/active_admin.self-9f0dac3d862315cc7a18c9c27e1421a86ce963bb2aac862f964727a18c18c1eb.css?body=1" for 67.86.240.24 at 2017-07-05 22:45:08 +0000
+Cannot render console from 67.86.240.24! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+
+
+Started GET "/assets/authors.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for 67.86.240.24 at 2017-07-05 22:45:08 +0000
+Cannot render console from 67.86.240.24! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+
+
+Started GET "/assets/jquery_ujs.self-d456baa54c1fa6be2ec3711f0a72ddf7a5b2f34a6b4f515f33767d6207b7d4b3.js?body=1" for 67.86.240.24 at 2017-07-05 22:45:08 +0000
+Cannot render console from 67.86.240.24! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+
+
+Started GET "/assets/jquery.self-a714331225dda820228db323939889f149aec0127aeb06255646b616ba1ca419.js?body=1" for 67.86.240.24 at 2017-07-05 22:45:08 +0000
+Cannot render console from 67.86.240.24! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+
+
+Started GET "/assets/application.self-e80e8f2318043e8af94dddc2adad5a4f09739a8ebb323b3ab31cd71d45fd9113.css?body=1" for 67.86.240.24 at 2017-07-05 22:45:08 +0000
+Cannot render console from 67.86.240.24! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+
+
+Started GET "/assets/turbolinks.self-c37727e9bd6b2735da5c311aa83fead54ed0be6cc8bd9a65309e9c5abe2cbfff.js?body=1" for 67.86.240.24 at 2017-07-05 22:45:08 +0000
+Cannot render console from 67.86.240.24! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+
+
+Started GET "/assets/jquery-ui/core.self-93be4d22eda916787802a64d8f88b52db8a9027d4ccbbc0942625324a7d12d44.js?body=1" for 67.86.240.24 at 2017-07-05 22:45:08 +0000
+Cannot render console from 67.86.240.24! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+
+
+Started GET "/assets/jquery-ui/widget.self-c1602241ddc51216b58391768667068867b8e15b9efc722befcd25771eda6819.js?body=1" for 67.86.240.24 at 2017-07-05 22:45:08 +0000
+Cannot render console from 67.86.240.24! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+
+
+Started GET "/assets/jquery-ui/datepicker.self-6267be6d4d0f0e8665be3b4d6ac07f40ba23a32aff8eaa5d1bfc00f76a9eeae7.js?body=1" for 67.86.240.24 at 2017-07-05 22:45:08 +0000
+Cannot render console from 67.86.240.24! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+
+
+Started GET "/assets/jquery-ui/button.self-4d4f21ba77bbf8cc08ae65e2b6329a7a1b952b32c3ba7bffca8313e7e8c93d0c.js?body=1" for 67.86.240.24 at 2017-07-05 22:45:08 +0000
+Cannot render console from 67.86.240.24! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+
+
+Started GET "/assets/jquery-ui/mouse.self-c513294e8da73f31f84ba3ef11e2a1180a47faea0eb2fea4a53fc26153dd21fd.js?body=1" for 67.86.240.24 at 2017-07-05 22:45:08 +0000
+Cannot render console from 67.86.240.24! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+
+
+Started GET "/assets/jquery-ui/position.self-e693ced4ecfa1a276f0b794f32c1d30d792764b08788bf68ecfa3b388c291333.js?body=1" for 67.86.240.24 at 2017-07-05 22:45:08 +0000
+Cannot render console from 67.86.240.24! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+
+
+Started GET "/assets/jquery-ui/draggable.self-debcca3d0d5d9afe2fe91a6fd1aebdb41ca0a55f2f6017352e6c02b6d8a6e64c.js?body=1" for 67.86.240.24 at 2017-07-05 22:45:08 +0000
+Cannot render console from 67.86.240.24! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+
+
+Started GET "/assets/jquery-ui/resizable.self-60b870565f3cd62982c1907828119bb51f42ec8228d5e23868153edc3abc685c.js?body=1" for 67.86.240.24 at 2017-07-05 22:45:08 +0000
+Cannot render console from 67.86.240.24! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+
+
+Started GET "/assets/jquery-ui/sortable.self-df2d80a36f9dfbe0facc596ccd92af83ca50d38e4cd6a84810aaf5d40b8cd181.js?body=1" for 67.86.240.24 at 2017-07-05 22:45:08 +0000
+Cannot render console from 67.86.240.24! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+
+
+Started GET "/assets/active_admin/jquery_ui.self-75a11da44c802486bc6f65640aa48a730f0f684c5c07a42ba3cd1735eb3fb070.js?body=1" for 67.86.240.24 at 2017-07-05 22:45:08 +0000
+Cannot render console from 67.86.240.24! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+
+
+Started GET "/assets/jquery-ui/dialog.self-5a6c7980dfa3f6b74445b0f4b20eed799ee65363163500ed7f032e603d6b022d.js?body=1" for 67.86.240.24 at 2017-07-05 22:45:08 +0000
+Cannot render console from 67.86.240.24! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+
+
+Started GET "/assets/jquery-ui/tabs.self-dc07b44bf1b926c8d28ccd2658e30933881e5329348caf70cf305c3943f6bbd7.js?body=1" for 67.86.240.24 at 2017-07-05 22:45:08 +0000
+Cannot render console from 67.86.240.24! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+
+
+Started GET "/assets/active_admin/base.self-ab2cb3098b53fe7d229937d768d701e8f4013f2a5aea7988d8f2149fa40426db.js?body=1" for 67.86.240.24 at 2017-07-05 22:45:08 +0000
+Cannot render console from 67.86.240.24! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+
+
+Started GET "/assets/active_admin/lib/batch_actions.self-fbed82dc1e31cf860056cce6c02f5bc5831ad5343d68ac3ab17471c9e05e9195.js?body=1" for 67.86.240.24 at 2017-07-05 22:45:08 +0000
+Cannot render console from 67.86.240.24! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+
+
+Started GET "/assets/active_admin/lib/checkbox-toggler.self-ab6f686db7db58fd7f370cd6f7a6d7abe6884b8d2a144f42a744c2276587b457.js?body=1" for 67.86.240.24 at 2017-07-05 22:45:08 +0000
+Cannot render console from 67.86.240.24! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+
+
+Started GET "/assets/active_admin/lib/flash.self-8f05a5d9328ea28fca100b057787fbfb567986513c5f1735ea48fad8f9571c10.js?body=1" for 67.86.240.24 at 2017-07-05 22:45:08 +0000
+Cannot render console from 67.86.240.24! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+
+
+Started GET "/assets/active_admin/lib/dropdown-menu.self-8ccb356121a1c40094bb429d6cfac85d9c8ad114fb93730892d9df9986730a0a.js?body=1" for 67.86.240.24 at 2017-07-05 22:45:08 +0000
+Cannot render console from 67.86.240.24! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+
+
+Started GET "/assets/active_admin/lib/has_many.self-ece319debdc01ca5096ae8ac6c130ffc0decab382543b4b94e18591375d3d3bb.js?body=1" for 67.86.240.24 at 2017-07-05 22:45:08 +0000
+Cannot render console from 67.86.240.24! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+
+
+Started GET "/assets/active_admin/lib/modal_dialog.self-5dfc6e87bae26cd4a021eb86951d3691ed07e6d2bf242a8eb65dc6965e12096c.js?body=1" for 67.86.240.24 at 2017-07-05 22:45:08 +0000
+Cannot render console from 67.86.240.24! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+
+
+Started GET "/assets/active_admin/lib/per_page.self-94323c49402595a22bdea01b8dc3f8103e290d300238ebd49efa26d76d7ee117.js?body=1" for 67.86.240.24 at 2017-07-05 22:45:08 +0000
+Cannot render console from 67.86.240.24! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+
+
+Started GET "/assets/active_admin/lib/table-checkbox-toggler.self-f5200d732ec9ffd4ee8fd1fe11524ad7b54a67f6c0ef447a29d119ece2dcecdb.js?body=1" for 67.86.240.24 at 2017-07-05 22:45:08 +0000
+Cannot render console from 67.86.240.24! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+
+
+Started GET "/assets/active_admin/ext/jquery-ui.self-f96f2ec2a32c4bc4da4292cc74bddeca0bb223d81a421c98c4d613632860945e.js?body=1" for 67.86.240.24 at 2017-07-05 22:45:08 +0000
+Cannot render console from 67.86.240.24! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+
+
+Started GET "/assets/active_admin/ext/jquery.self-da8dafbbe883092bcae73f35a8caf4ae6170fe7d8130ae7039a233f9b509c757.js?body=1" for 67.86.240.24 at 2017-07-05 22:45:08 +0000
+Cannot render console from 67.86.240.24! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+
+
+Started GET "/assets/active_admin/initializers/batch_actions.self-f5c360e8640b40f00640f6e5c7cfe0addeb244ed72e1a9828c52919515d23cf1.js?body=1" for 67.86.240.24 at 2017-07-05 22:45:09 +0000
+Cannot render console from 67.86.240.24! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+
+
+Started GET "/assets/active_admin/initializers/datepicker.self-f8ac66c85afd35ee1555c09a2418efc7a7930e1f6dd783461379c2bb2184f80e.js?body=1" for 67.86.240.24 at 2017-07-05 22:45:09 +0000
+Cannot render console from 67.86.240.24! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+
+
+Started GET "/assets/active_admin/initializers/filters.self-9b9312d6bed532db668c5417a009b7fb7caf58f33299783ed02c2c72340a498a.js?body=1" for 67.86.240.24 at 2017-07-05 22:45:09 +0000
+Cannot render console from 67.86.240.24! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+
+
+Started GET "/assets/active_admin/initializers/tabs.self-65de8b1688d4f8782c04bf07ba6314d3c8b33b9391a482a07214ac4df99dd904.js?body=1" for 67.86.240.24 at 2017-07-05 22:45:09 +0000
+Cannot render console from 67.86.240.24! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+
+
+Started GET "/assets/active_admin.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for 67.86.240.24 at 2017-07-05 22:45:09 +0000
+Cannot render console from 67.86.240.24! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+
+
+Started GET "/assets/application.self-3b8dabdc891efe46b9a144b400ad69e37d7e5876bdc39dee783419a69d7ca819.js?body=1" for 67.86.240.24 at 2017-07-05 22:45:09 +0000
+Cannot render console from 67.86.240.24! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+
+
+Started GET "/assets/authors.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for 67.86.240.24 at 2017-07-05 22:45:09 +0000
+Cannot render console from 67.86.240.24! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+
+
+Started GET "/" for 67.86.240.24 at 2017-07-05 22:45:18 +0000
+Cannot render console from 67.86.240.24! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by PostsController#index as HTML
+  [1m[35mPost Load (0.2ms)[0m  SELECT "posts".* FROM "posts"
+  [1m[36mAuthor Load (0.1ms)[0m  [1mSELECT  "authors".* FROM "authors" WHERE "authors"."id" = ? LIMIT 1[0m  [["id", 4]]
+  [1m[35mAuthor Load (0.1ms)[0m  SELECT  "authors".* FROM "authors" WHERE "authors"."id" = ? LIMIT 1  [["id", 5]]
+  [1m[36mAuthor Load (0.1ms)[0m  [1mSELECT  "authors".* FROM "authors" WHERE "authors"."id" = ? LIMIT 1[0m  [["id", 6]]
+  Rendered posts/index.html.erb within layouts/application (3.8ms)
+Completed 200 OK in 205ms (Views: 204.0ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/admin/login" for 67.86.240.24 at 2017-07-05 22:45:56 +0000
+Cannot render console from 67.86.240.24! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by ActiveAdmin::Devise::SessionsController#new as HTML
+  Rendered /usr/local/rvm/gems/ruby-2.3.1/gems/activeadmin-1.0.0/app/views/active_admin/devise/shared/_links.erb (7.1ms)
+  Rendered /usr/local/rvm/gems/ruby-2.3.1/gems/activeadmin-1.0.0/app/views/active_admin/devise/sessions/new.html.erb within layouts/active_admin_logged_out (107.3ms)
+Completed 200 OK in 612ms (Views: 594.2ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/assets/active_admin/print.self-fd625e6a359e3b62c2bfec121749b41eb38e54413b0700838344436894907b33.css?body=1" for 67.86.240.24 at 2017-07-05 22:45:57 +0000
+Cannot render console from 67.86.240.24! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+
+
+Started POST "/admin/login" for 67.86.240.24 at 2017-07-05 22:46:31 +0000
+Cannot render console from 67.86.240.24! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by ActiveAdmin::Devise::SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"NCas+lSX2bFB+kwea+8WZmvWFcO3Jf3OtnPttjXxqP8VDkTtUWGPyfJUHphW0VngZuk8Dnpj1jZZS0hjuOTEuQ==", "admin_user"=>{"email"=>"admin@example.com", "password"=>"[FILTERED]", "remember_me"=>"0"}, "commit"=>"Login"}
+  [1m[35mAdminUser Load (0.4ms)[0m  SELECT  "admin_users".* FROM "admin_users" WHERE "admin_users"."email" = ?  ORDER BY "admin_users"."id" ASC LIMIT 1  [["email", "admin@example.com"]]
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.4ms)[0m  UPDATE "admin_users" SET "last_sign_in_at" = ?, "current_sign_in_at" = ?, "last_sign_in_ip" = ?, "current_sign_in_ip" = ?, "sign_in_count" = ?, "updated_at" = ? WHERE "admin_users"."id" = ?  [["last_sign_in_at", "2017-07-05 22:46:31.849800"], ["current_sign_in_at", "2017-07-05 22:46:31.849800"], ["last_sign_in_ip", "67.86.240.24"], ["current_sign_in_ip", "67.86.240.24"], ["sign_in_count", 1], ["updated_at", "2017-07-05 22:46:31.851256"], ["id", 1]]
+  [1m[36m (2.6ms)[0m  [1mcommit transaction[0m
+Redirected to http://159.203.91.59:30011/admin
+Completed 302 Found in 225ms (ActiveRecord: 3.4ms)
+
+
+Started GET "/admin" for 67.86.240.24 at 2017-07-05 22:46:31 +0000
+Cannot render console from 67.86.240.24! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by Admin::DashboardController#index as HTML
+  [1m[35mAdminUser Load (0.3ms)[0m  SELECT  "admin_users".* FROM "admin_users" WHERE "admin_users"."id" = ?  ORDER BY "admin_users"."id" ASC LIMIT 1  [["id", 1]]
+  Rendered /usr/local/rvm/gems/ruby-2.3.1/gems/activeadmin-1.0.0/app/views/active_admin/page/index.html.arb (206.2ms)
+Completed 200 OK in 215ms (Views: 211.0ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/" for 73.188.0.118 at 2017-07-05 22:48:06 +0000
+Cannot render console from 73.188.0.118! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by PostsController#index as HTML
+  [1m[36mPost Load (0.6ms)[0m  [1mSELECT "posts".* FROM "posts"[0m
+  [1m[35mAuthor Load (0.2ms)[0m  SELECT  "authors".* FROM "authors" WHERE "authors"."id" = ? LIMIT 1  [["id", 4]]
+  [1m[36mAuthor Load (0.1ms)[0m  [1mSELECT  "authors".* FROM "authors" WHERE "authors"."id" = ? LIMIT 1[0m  [["id", 5]]
+  [1m[35mAuthor Load (0.1ms)[0m  SELECT  "authors".* FROM "authors" WHERE "authors"."id" = ? LIMIT 1  [["id", 6]]
+  Rendered posts/index.html.erb within layouts/application (16.4ms)
+Completed 200 OK in 237ms (Views: 231.6ms | ActiveRecord: 1.7ms)
+
+
+Started GET "/assets/authors.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for 73.188.0.118 at 2017-07-05 22:48:06 +0000
+Cannot render console from 73.188.0.118! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+
+
+Started GET "/assets/active_admin.self-9f0dac3d862315cc7a18c9c27e1421a86ce963bb2aac862f964727a18c18c1eb.css?body=1" for 73.188.0.118 at 2017-07-05 22:48:06 +0000
+Cannot render console from 73.188.0.118! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+
+
+Started GET "/assets/jquery.self-a714331225dda820228db323939889f149aec0127aeb06255646b616ba1ca419.js?body=1" for 73.188.0.118 at 2017-07-05 22:48:06 +0000
+Cannot render console from 73.188.0.118! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+
+
+Started GET "/assets/jquery_ujs.self-d456baa54c1fa6be2ec3711f0a72ddf7a5b2f34a6b4f515f33767d6207b7d4b3.js?body=1" for 73.188.0.118 at 2017-07-05 22:48:06 +0000
+Cannot render console from 73.188.0.118! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+
+
+Started GET "/assets/application.self-e80e8f2318043e8af94dddc2adad5a4f09739a8ebb323b3ab31cd71d45fd9113.css?body=1" for 73.188.0.118 at 2017-07-05 22:48:06 +0000
+Cannot render console from 73.188.0.118! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+
+
+Started GET "/assets/turbolinks.self-c37727e9bd6b2735da5c311aa83fead54ed0be6cc8bd9a65309e9c5abe2cbfff.js?body=1" for 73.188.0.118 at 2017-07-05 22:48:06 +0000
+Cannot render console from 73.188.0.118! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+
+
+Started GET "/assets/jquery-ui/core.self-93be4d22eda916787802a64d8f88b52db8a9027d4ccbbc0942625324a7d12d44.js?body=1" for 73.188.0.118 at 2017-07-05 22:48:06 +0000
+Cannot render console from 73.188.0.118! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+
+
+Started GET "/assets/jquery-ui/datepicker.self-6267be6d4d0f0e8665be3b4d6ac07f40ba23a32aff8eaa5d1bfc00f76a9eeae7.js?body=1" for 73.188.0.118 at 2017-07-05 22:48:06 +0000
+Cannot render console from 73.188.0.118! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+
+
+Started GET "/assets/jquery-ui/widget.self-c1602241ddc51216b58391768667068867b8e15b9efc722befcd25771eda6819.js?body=1" for 73.188.0.118 at 2017-07-05 22:48:07 +0000
+Cannot render console from 73.188.0.118! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+
+
+Started GET "/assets/jquery-ui/draggable.self-debcca3d0d5d9afe2fe91a6fd1aebdb41ca0a55f2f6017352e6c02b6d8a6e64c.js?body=1" for 73.188.0.118 at 2017-07-05 22:48:07 +0000
+Cannot render console from 73.188.0.118! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+
+
+Started GET "/assets/jquery-ui/mouse.self-c513294e8da73f31f84ba3ef11e2a1180a47faea0eb2fea4a53fc26153dd21fd.js?body=1" for 73.188.0.118 at 2017-07-05 22:48:07 +0000
+Cannot render console from 73.188.0.118! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+
+
+Started GET "/assets/jquery-ui/button.self-4d4f21ba77bbf8cc08ae65e2b6329a7a1b952b32c3ba7bffca8313e7e8c93d0c.js?body=1" for 73.188.0.118 at 2017-07-05 22:48:07 +0000
+Cannot render console from 73.188.0.118! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+
+
+Started GET "/assets/jquery-ui/position.self-e693ced4ecfa1a276f0b794f32c1d30d792764b08788bf68ecfa3b388c291333.js?body=1" for 73.188.0.118 at 2017-07-05 22:48:07 +0000
+Cannot render console from 73.188.0.118! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+
+
+Started GET "/assets/jquery-ui/resizable.self-60b870565f3cd62982c1907828119bb51f42ec8228d5e23868153edc3abc685c.js?body=1" for 73.188.0.118 at 2017-07-05 22:48:07 +0000
+Cannot render console from 73.188.0.118! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+
+
+Started GET "/assets/jquery-ui/sortable.self-df2d80a36f9dfbe0facc596ccd92af83ca50d38e4cd6a84810aaf5d40b8cd181.js?body=1" for 73.188.0.118 at 2017-07-05 22:48:07 +0000
+Cannot render console from 73.188.0.118! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+
+
+Started GET "/assets/jquery-ui/dialog.self-5a6c7980dfa3f6b74445b0f4b20eed799ee65363163500ed7f032e603d6b022d.js?body=1" for 73.188.0.118 at 2017-07-05 22:48:07 +0000
+Cannot render console from 73.188.0.118! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+
+
+Started GET "/assets/jquery-ui/tabs.self-dc07b44bf1b926c8d28ccd2658e30933881e5329348caf70cf305c3943f6bbd7.js?body=1" for 73.188.0.118 at 2017-07-05 22:48:07 +0000
+Cannot render console from 73.188.0.118! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+
+
+Started GET "/assets/active_admin/jquery_ui.self-75a11da44c802486bc6f65640aa48a730f0f684c5c07a42ba3cd1735eb3fb070.js?body=1" for 73.188.0.118 at 2017-07-05 22:48:07 +0000
+Cannot render console from 73.188.0.118! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+
+
+Started GET "/assets/active_admin/base.self-ab2cb3098b53fe7d229937d768d701e8f4013f2a5aea7988d8f2149fa40426db.js?body=1" for 73.188.0.118 at 2017-07-05 22:48:07 +0000
+Cannot render console from 73.188.0.118! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+
+
+Started GET "/assets/active_admin/lib/batch_actions.self-fbed82dc1e31cf860056cce6c02f5bc5831ad5343d68ac3ab17471c9e05e9195.js?body=1" for 73.188.0.118 at 2017-07-05 22:48:07 +0000
+Cannot render console from 73.188.0.118! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+
+
+Started GET "/assets/active_admin/lib/checkbox-toggler.self-ab6f686db7db58fd7f370cd6f7a6d7abe6884b8d2a144f42a744c2276587b457.js?body=1" for 73.188.0.118 at 2017-07-05 22:48:07 +0000
+Cannot render console from 73.188.0.118! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+
+
+Started GET "/assets/active_admin/lib/flash.self-8f05a5d9328ea28fca100b057787fbfb567986513c5f1735ea48fad8f9571c10.js?body=1" for 73.188.0.118 at 2017-07-05 22:48:07 +0000
+Cannot render console from 73.188.0.118! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+
+
+Started GET "/assets/active_admin/lib/has_many.self-ece319debdc01ca5096ae8ac6c130ffc0decab382543b4b94e18591375d3d3bb.js?body=1" for 73.188.0.118 at 2017-07-05 22:48:07 +0000
+Cannot render console from 73.188.0.118! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+
+
+Started GET "/assets/active_admin/lib/dropdown-menu.self-8ccb356121a1c40094bb429d6cfac85d9c8ad114fb93730892d9df9986730a0a.js?body=1" for 73.188.0.118 at 2017-07-05 22:48:07 +0000
+Cannot render console from 73.188.0.118! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+
+
+Started GET "/assets/active_admin/lib/modal_dialog.self-5dfc6e87bae26cd4a021eb86951d3691ed07e6d2bf242a8eb65dc6965e12096c.js?body=1" for 73.188.0.118 at 2017-07-05 22:48:07 +0000
+Cannot render console from 73.188.0.118! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+
+
+Started GET "/assets/active_admin/lib/table-checkbox-toggler.self-f5200d732ec9ffd4ee8fd1fe11524ad7b54a67f6c0ef447a29d119ece2dcecdb.js?body=1" for 73.188.0.118 at 2017-07-05 22:48:07 +0000
+Cannot render console from 73.188.0.118! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+
+
+Started GET "/assets/active_admin/ext/jquery-ui.self-f96f2ec2a32c4bc4da4292cc74bddeca0bb223d81a421c98c4d613632860945e.js?body=1" for 73.188.0.118 at 2017-07-05 22:48:07 +0000
+Cannot render console from 73.188.0.118! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+
+
+Started GET "/assets/active_admin/lib/per_page.self-94323c49402595a22bdea01b8dc3f8103e290d300238ebd49efa26d76d7ee117.js?body=1" for 73.188.0.118 at 2017-07-05 22:48:07 +0000
+Cannot render console from 73.188.0.118! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+
+
+Started GET "/assets/active_admin/ext/jquery.self-da8dafbbe883092bcae73f35a8caf4ae6170fe7d8130ae7039a233f9b509c757.js?body=1" for 73.188.0.118 at 2017-07-05 22:48:07 +0000
+Cannot render console from 73.188.0.118! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+
+
+Started GET "/assets/active_admin/initializers/datepicker.self-f8ac66c85afd35ee1555c09a2418efc7a7930e1f6dd783461379c2bb2184f80e.js?body=1" for 73.188.0.118 at 2017-07-05 22:48:07 +0000
+Cannot render console from 73.188.0.118! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+
+
+Started GET "/assets/active_admin/initializers/batch_actions.self-f5c360e8640b40f00640f6e5c7cfe0addeb244ed72e1a9828c52919515d23cf1.js?body=1" for 73.188.0.118 at 2017-07-05 22:48:07 +0000
+Cannot render console from 73.188.0.118! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+
+
+Started GET "/assets/active_admin/initializers/filters.self-9b9312d6bed532db668c5417a009b7fb7caf58f33299783ed02c2c72340a498a.js?body=1" for 73.188.0.118 at 2017-07-05 22:48:07 +0000
+Cannot render console from 73.188.0.118! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+
+
+Started GET "/assets/active_admin/initializers/tabs.self-65de8b1688d4f8782c04bf07ba6314d3c8b33b9391a482a07214ac4df99dd904.js?body=1" for 73.188.0.118 at 2017-07-05 22:48:07 +0000
+Cannot render console from 73.188.0.118! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+
+
+Started GET "/assets/active_admin.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for 73.188.0.118 at 2017-07-05 22:48:07 +0000
+Cannot render console from 73.188.0.118! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+
+
+Started GET "/assets/authors.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for 73.188.0.118 at 2017-07-05 22:48:07 +0000
+Cannot render console from 73.188.0.118! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+
+
+Started GET "/assets/application.self-3b8dabdc891efe46b9a144b400ad69e37d7e5876bdc39dee783419a69d7ca819.js?body=1" for 73.188.0.118 at 2017-07-05 22:48:07 +0000
+Cannot render console from 73.188.0.118! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+
+
+Started GET "/posts/5" for 73.188.0.118 at 2017-07-05 22:48:09 +0000
+Cannot render console from 73.188.0.118! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by PostsController#show as HTML
+  Parameters: {"id"=>"5"}
+  [1m[36mPost Load (0.2ms)[0m  [1mSELECT  "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT 1[0m  [["id", 5]]
+  Rendered posts/show.html.erb within layouts/application (0.6ms)
+Completed 200 OK in 200ms (Views: 197.8ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/admin" for 67.86.240.24 at 2017-07-05 22:48:39 +0000
+Cannot render console from 67.86.240.24! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by Admin::DashboardController#index as HTML
+  [1m[35mAdminUser Load (0.3ms)[0m  SELECT  "admin_users".* FROM "admin_users" WHERE "admin_users"."id" = ?  ORDER BY "admin_users"."id" ASC LIMIT 1  [["id", 1]]
+  Rendered /usr/local/rvm/gems/ruby-2.3.1/gems/activeadmin-1.0.0/app/views/active_admin/page/index.html.arb (234.1ms)
+Completed 200 OK in 367ms (Views: 290.3ms | ActiveRecord: 53.3ms)
+
+
+Started GET "/admin/admin_users" for 67.86.240.24 at 2017-07-05 22:48:41 +0000
+Cannot render console from 67.86.240.24! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by Admin::AdminUsersController#index as HTML
+  [1m[36mAdminUser Load (0.1ms)[0m  [1mSELECT  "admin_users".* FROM "admin_users" WHERE "admin_users"."id" = ?  ORDER BY "admin_users"."id" ASC LIMIT 1[0m  [["id", 1]]
+  [1m[35m (0.3ms)[0m  SELECT COUNT(count_column) FROM (SELECT  1 AS count_column FROM "admin_users" LIMIT 30 OFFSET 0) subquery_for_count
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT COUNT(count_column) FROM (SELECT  1 AS count_column FROM "admin_users" LIMIT 30 OFFSET 0) subquery_for_count[0m
+  [1m[35m (0.3ms)[0m  SELECT COUNT(*) FROM "admin_users"
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT COUNT(count_column) FROM (SELECT  1 AS count_column FROM "admin_users" LIMIT 30 OFFSET 0) subquery_for_count[0m
+  [1m[35mAdminUser Load (0.4ms)[0m  SELECT  "admin_users".* FROM "admin_users"  ORDER BY "admin_users"."id" desc LIMIT 30 OFFSET 0
+  Rendered /usr/local/rvm/gems/ruby-2.3.1/gems/activeadmin-1.0.0/app/views/active_admin/resource/index.html.arb (384.3ms)
+Completed 200 OK in 395ms (Views: 389.9ms | ActiveRecord: 1.1ms)
+
+
+Started GET "/assets/active_admin/orderable-29374dbb55b0012d78a37c614d573bb3474f0779849b478a147d0f1845ca6617.png" for 67.86.240.24 at 2017-07-05 22:48:41 +0000
+Cannot render console from 67.86.240.24! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+
+
+Started GET "/assets/active_admin/datepicker/datepicker-input-icon-d9c2bb73769af777c8a71720d29741f3a499aebd5a043e9a119bd0d9597aed47.png" for 67.86.240.24 at 2017-07-05 22:48:41 +0000
+Cannot render console from 67.86.240.24! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+
+
+Started GET "/admin/authors" for 67.86.240.24 at 2017-07-05 22:48:42 +0000
+Cannot render console from 67.86.240.24! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by Admin::AuthorsController#index as HTML
+  [1m[36mAdminUser Load (0.2ms)[0m  [1mSELECT  "admin_users".* FROM "admin_users" WHERE "admin_users"."id" = ?  ORDER BY "admin_users"."id" ASC LIMIT 1[0m  [["id", 1]]
+  [1m[35m (0.3ms)[0m  SELECT COUNT(count_column) FROM (SELECT  1 AS count_column FROM "authors" LIMIT 30 OFFSET 0) subquery_for_count
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT COUNT(count_column) FROM (SELECT  1 AS count_column FROM "authors" LIMIT 30 OFFSET 0) subquery_for_count[0m
+  [1m[35m (0.2ms)[0m  SELECT COUNT(*) FROM "authors"
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT COUNT(count_column) FROM (SELECT  1 AS count_column FROM "authors" LIMIT 30 OFFSET 0) subquery_for_count[0m
+  [1m[35mAuthor Load (0.3ms)[0m  SELECT  "authors".* FROM "authors"  ORDER BY "authors"."id" desc LIMIT 30 OFFSET 0
+  [1m[36mPost Load (0.3ms)[0m  [1mSELECT "posts".* FROM "posts"[0m
+  Rendered /usr/local/rvm/gems/ruby-2.3.1/gems/activeadmin-1.0.0/app/views/active_admin/resource/index.html.arb (394.6ms)
+Completed 200 OK in 407ms (Views: 399.6ms | ActiveRecord: 1.9ms)
+
+
+Started GET "/admin/authors/5" for 67.86.240.24 at 2017-07-05 22:48:47 +0000
+Cannot render console from 67.86.240.24! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by Admin::AuthorsController#show as HTML
+  Parameters: {"id"=>"5"}
+  [1m[35mAdminUser Load (0.1ms)[0m  SELECT  "admin_users".* FROM "admin_users" WHERE "admin_users"."id" = ?  ORDER BY "admin_users"."id" ASC LIMIT 1  [["id", 1]]
+  [1m[36mAuthor Load (0.2ms)[0m  [1mSELECT  "authors".* FROM "authors" WHERE "authors"."id" = ? LIMIT 1[0m  [["id", 5]]
+  [1m[35m (0.2ms)[0m  SELECT COUNT(*) FROM "active_admin_comments" WHERE "active_admin_comments"."resource_type" = ? AND "active_admin_comments"."namespace" = ? AND "active_admin_comments"."resource_id" = 5  [["resource_type", "Author"], ["namespace", "admin"]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT COUNT(*) FROM "active_admin_comments" WHERE "active_admin_comments"."resource_type" = ? AND "active_admin_comments"."namespace" = ? AND "active_admin_comments"."resource_id" = 5[0m  [["resource_type", "Author"], ["namespace", "admin"]]
+  Rendered /usr/local/rvm/gems/ruby-2.3.1/gems/activeadmin-1.0.0/app/views/active_admin/resource/show.html.arb (324.1ms)
+Completed 200 OK in 331ms (Views: 326.4ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/admin/authors/5/edit" for 67.86.240.24 at 2017-07-05 22:48:57 +0000
+Cannot render console from 67.86.240.24! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by Admin::AuthorsController#edit as HTML
+  Parameters: {"id"=>"5"}
+  [1m[35mAdminUser Load (0.2ms)[0m  SELECT  "admin_users".* FROM "admin_users" WHERE "admin_users"."id" = ?  ORDER BY "admin_users"."id" ASC LIMIT 1  [["id", 1]]
+  [1m[36mAuthor Load (0.1ms)[0m  [1mSELECT  "authors".* FROM "authors" WHERE "authors"."id" = ? LIMIT 1[0m  [["id", 5]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "authors".* FROM "authors" WHERE "authors"."id" = ? LIMIT 1  [["id", "5"]]
+  Rendered /usr/local/rvm/gems/ruby-2.3.1/gems/activeadmin-1.0.0/app/views/active_admin/resource/edit.html.arb (209.1ms)
+Completed 200 OK in 215ms (Views: 212.0ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/admin/comments" for 67.86.240.24 at 2017-07-05 22:49:02 +0000
+Cannot render console from 67.86.240.24! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by Admin::CommentsController#index as HTML
+  [1m[36mAdminUser Load (0.1ms)[0m  [1mSELECT  "admin_users".* FROM "admin_users" WHERE "admin_users"."id" = ?  ORDER BY "admin_users"."id" ASC LIMIT 1[0m  [["id", 1]]
+  [1m[35m (0.3ms)[0m  SELECT COUNT(*) FROM "active_admin_comments" WHERE "active_admin_comments"."namespace" = ?  [["namespace", "admin"]]
+  [1m[36m (0.2ms)[0m  [1mSELECT COUNT(count_column) FROM (SELECT  1 AS count_column FROM "active_admin_comments" WHERE "active_admin_comments"."namespace" = ? LIMIT 30 OFFSET 0) subquery_for_count[0m  [["namespace", "admin"]]
+  [1m[35m (0.2ms)[0m  SELECT DISTINCT "active_admin_comments"."resource_type" FROM "active_admin_comments"  ORDER BY resource_type asc
+  [1m[36m (0.3ms)[0m  [1mSELECT DISTINCT "active_admin_comments"."author_type" FROM "active_admin_comments"  ORDER BY author_type asc[0m
+  Rendered /usr/local/rvm/gems/ruby-2.3.1/gems/activeadmin-1.0.0/app/views/active_admin/resource/index.html.arb (302.7ms)
+Completed 200 OK in 314ms (Views: 308.6ms | ActiveRecord: 1.2ms)
+
+
+Started GET "/admin/dashboard" for 67.86.240.24 at 2017-07-05 22:49:03 +0000
+Cannot render console from 67.86.240.24! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by Admin::DashboardController#index as HTML
+  [1m[35mAdminUser Load (0.1ms)[0m  SELECT  "admin_users".* FROM "admin_users" WHERE "admin_users"."id" = ?  ORDER BY "admin_users"."id" ASC LIMIT 1  [["id", 1]]
+  Rendered /usr/local/rvm/gems/ruby-2.3.1/gems/activeadmin-1.0.0/app/views/active_admin/page/index.html.arb (222.2ms)
+Completed 200 OK in 226ms (Views: 223.8ms | ActiveRecord: 0.1ms)
