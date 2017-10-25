@@ -35,6 +35,7 @@ gem 'devise'
 # gem 'capistrano-rails', group: :development
 
 group :development, :test do
+  gem 'pry'
   gem 'byebug'
   gem 'rspec-rails', '~> 3.0'
   gem 'capybara'
