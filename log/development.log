@@ -3241,3 +3241,370 @@ Processing by PostsController#index as HTML
   [1m[36mAuthor Load (0.1ms)[0m  [1mSELECT  "authors".* FROM "authors" WHERE "authors"."id" = ? LIMIT 1[0m  [["id", 3]]
   Rendered posts/index.html.erb within layouts/application (33.3ms)
 Completed 200 OK in 260ms (Views: 253.3ms | ActiveRecord: 1.5ms)
+  [1m[36mActiveRecord::SchemaMigration Load (0.4ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Migrating to DeviseCreateAdminUsers (20180122213144)
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.4ms)[0m  [1mCREATE TABLE "admin_users" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "email" varchar DEFAULT '' NOT NULL, "encrypted_password" varchar DEFAULT '' NOT NULL, "reset_password_token" varchar, "reset_password_sent_at" datetime, "remember_created_at" datetime, "sign_in_count" integer DEFAULT 0 NOT NULL, "current_sign_in_at" datetime, "last_sign_in_at" datetime, "current_sign_in_ip" varchar, "last_sign_in_ip" varchar, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) [0m
+  [1m[35m (0.5ms)[0m  select sqlite_version(*)
+  [1m[36m (0.3ms)[0m  [1mCREATE UNIQUE INDEX "index_admin_users_on_email" ON "admin_users" ("email")[0m
+  [1m[35m (0.1ms)[0m              SELECT sql
+            FROM sqlite_master
+            WHERE name='index_admin_users_on_email' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_admin_users_on_email' AND type='index'
+
+  [1m[36m (0.1ms)[0m  [1mCREATE UNIQUE INDEX "index_admin_users_on_reset_password_token" ON "admin_users" ("reset_password_token")[0m
+  [1m[35mSQL (0.5ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES (?)  [["version", "20180122213144"]]
+  [1m[36m (0.9ms)[0m  [1mcommit transaction[0m
+Migrating to CreateActiveAdminComments (20180122213148)
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.4ms)[0m  [1mCREATE TABLE "active_admin_comments" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "namespace" varchar, "body" text, "resource_id" integer, "resource_type" varchar, "author_id" integer, "author_type" varchar, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) [0m
+  [1m[35m (0.1ms)[0m  CREATE  INDEX "index_active_admin_comments_on_namespace" ON "active_admin_comments" ("namespace")
+  [1m[36m (0.1ms)[0m  [1m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_active_admin_comments_on_namespace' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_active_admin_comments_on_namespace' AND type='index'
+[0m
+  [1m[35m (0.1ms)[0m  CREATE  INDEX "index_active_admin_comments_on_author_type_and_author_id" ON "active_admin_comments" ("author_type", "author_id")
+  [1m[36m (0.1ms)[0m  [1m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_active_admin_comments_on_author_type_and_author_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_active_admin_comments_on_author_type_and_author_id' AND type='index'
+[0m
+  [1m[35m (0.1ms)[0m              SELECT sql
+            FROM sqlite_master
+            WHERE name='index_active_admin_comments_on_namespace' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_active_admin_comments_on_namespace' AND type='index'
+
+  [1m[36m (0.1ms)[0m  [1mCREATE  INDEX "index_active_admin_comments_on_resource_type_and_resource_id" ON "active_admin_comments" ("resource_type", "resource_id")[0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES (?)  [["version", "20180122213148"]]
+  [1m[36m (0.7ms)[0m  [1mcommit transaction[0m
+  [1m[35mActiveRecord::SchemaMigration Load (0.1ms)[0m  SELECT "schema_migrations".* FROM "schema_migrations"
+  [1m[36m (0.1ms)[0m  [1m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_active_admin_comments_on_resource_type_and_resource_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_active_admin_comments_on_resource_type_and_resource_id' AND type='index'
+[0m
+  [1m[35m (0.1ms)[0m              SELECT sql
+            FROM sqlite_master
+            WHERE name='index_active_admin_comments_on_author_type_and_author_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_active_admin_comments_on_author_type_and_author_id' AND type='index'
+
+  [1m[36m (0.1ms)[0m  [1m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_active_admin_comments_on_namespace' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_active_admin_comments_on_namespace' AND type='index'
+[0m
+  [1m[35m (0.1ms)[0m              SELECT sql
+            FROM sqlite_master
+            WHERE name='index_admin_users_on_reset_password_token' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_admin_users_on_reset_password_token' AND type='index'
+
+  [1m[36m (0.1ms)[0m  [1m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_admin_users_on_email' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_admin_users_on_email' AND type='index'
+[0m
+  [1m[35m (0.1ms)[0m              SELECT sql
+            FROM sqlite_master
+            WHERE name='index_users_on_reset_password_token' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_users_on_reset_password_token' AND type='index'
+
+  [1m[36m (0.1ms)[0m  [1m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_users_on_email' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_users_on_email' AND type='index'
+[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35mPost Load (0.5ms)[0m  SELECT "posts".* FROM "posts"
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.4ms)[0m  DELETE FROM "posts" WHERE "posts"."id" = ?  [["id", 1]]
+  [1m[36m (0.7ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mSQL (0.1ms)[0m  [1mDELETE FROM "posts" WHERE "posts"."id" = ?[0m  [["id", 2]]
+  [1m[35m (0.6ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.1ms)[0m  DELETE FROM "posts" WHERE "posts"."id" = ?  [["id", 3]]
+  [1m[36m (0.7ms)[0m  [1mcommit transaction[0m
+  [1m[35mAuthor Load (0.5ms)[0m  SELECT "authors".* FROM "authors"
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.4ms)[0m  DELETE FROM "authors" WHERE "authors"."id" = ?  [["id", 1]]
+  [1m[36m (1.0ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.3ms)[0m  [1mDELETE FROM "authors" WHERE "authors"."id" = ?[0m  [["id", 2]]
+  [1m[35m (0.7ms)[0m  commit transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.2ms)[0m  DELETE FROM "authors" WHERE "authors"."id" = ?  [["id", 3]]
+  [1m[36m (0.7ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mSQL (0.9ms)[0m  [1mINSERT INTO "authors" ("name", "genre", "bio", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["name", "Stephen King"], ["genre", "Romance"], ["bio", "Writes a lot of scary things."], ["created_at", "2018-01-22 21:32:49.265301"], ["updated_at", "2018-01-22 21:32:49.265301"]]
+  [1m[35m (0.7ms)[0m  commit transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "authors" ("name", "genre", "bio", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)  [["name", "Ariana Huffington"], ["genre", "Comedy"], ["bio", "Up and comer. One to watch."], ["created_at", "2018-01-22 21:32:49.268656"], ["updated_at", "2018-01-22 21:32:49.268656"]]
+  [1m[36m (0.7ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "authors" ("name", "genre", "bio", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["name", "Horse Ebooks"], ["genre", "?????"], ["bio", "Eclectic."], ["created_at", "2018-01-22 21:32:49.270798"], ["updated_at", "2018-01-22 21:32:49.270798"]]
+  [1m[35m (0.9ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.4ms)[0m  INSERT INTO "posts" ("title", "description", "author_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)  [["title", "Something About Democrats"], ["description", "  Last night I dreamt there is more to life than to bully friends.\n  What has that got to do with Democrats, you probably wonder...\n  The answer is here. Right here. Back in school my hair was silly.\n  Nevermind about the details, but... In a nut-shell: And still,\n  it was strange. Using Google, I found a 12-sided dice.\n  Which would be nothing special but...\n"], ["author_id", 4], ["created_at", "2018-01-22 21:32:49.281233"], ["updated_at", "2018-01-22 21:32:49.281233"]]
+  [1m[36m (0.7ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "posts" ("title", "description", "author_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["title", "Spam Spam Spam"], ["description", "  It occurred to me that no matter what cards you are dealt,\n  you need to enjoy the small joys. How is this related to Spam, you ask.\n  Fair enough. OK, I will tell you something here now...\n  Sometime around last year I loved movies. Yeah, just what it sounds like.\n  In a nut-shell: And still, it was strange. I collided with the powers of a my computer,\n  broken and gray. And here's why this matters...\n"], ["author_id", 5], ["created_at", "2018-01-22 21:32:49.283994"], ["updated_at", "2018-01-22 21:32:49.283994"]]
+  [1m[35m (0.7ms)[0m  commit transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "posts" ("title", "description", "author_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)  [["title", "Links! Click Links!"], ["description", "  Last night I dreamt we simply need to realize to be so competitive.\n  Does the responsibility lie with Links, you probably wonder...\n  The answer is here. Right here. About the time I broke up with my\n  ex I was totally into music. Whatever. So that's that.\n  But something wasn't right. I stumbled upon a giant banana.\n"], ["author_id", 6], ["created_at", "2018-01-22 21:32:49.286472"], ["updated_at", "2018-01-22 21:32:49.286472"]]
+  [1m[36m (0.8ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mSQL (0.3ms)[0m  [1mUPDATE "posts" SET "created_at" = ?, "updated_at" = ? WHERE "posts"."id" = ?[0m  [["created_at", "2018-01-21 00:00:00.000000"], ["updated_at", "2018-01-22 21:32:49.290689"], ["id", 6]]
+  [1m[35m (0.7ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mAdminUser Exists (0.2ms)[0m  SELECT  1 AS one FROM "admin_users" WHERE "admin_users"."email" = 'admin@example.com' LIMIT 1
+  [1m[36mSQL (0.5ms)[0m  [1mINSERT INTO "admin_users" ("email", "encrypted_password", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["email", "admin@example.com"], ["encrypted_password", "$2a$10$55IXyYlKP8Fmrs0t8eBLMOf/WahJoIa3BUKVOoGjO3/rp.kGdcBLS"], ["created_at", "2018-01-22 21:32:49.404462"], ["updated_at", "2018-01-22 21:32:49.404462"]]
+  [1m[35m (0.7ms)[0m  commit transaction
+
+
+Started GET "/" for ::1 at 2018-01-22 16:33:12 -0500
+  [1m[36mActiveRecord::SchemaMigration Load (0.4ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by PostsController#index as HTML
+  [1m[35mPost Load (0.5ms)[0m  SELECT "posts".* FROM "posts"
+  [1m[36mAuthor Load (0.5ms)[0m  [1mSELECT  "authors".* FROM "authors" WHERE "authors"."id" = ? LIMIT 1[0m  [["id", 4]]
+  [1m[35mAuthor Load (0.1ms)[0m  SELECT  "authors".* FROM "authors" WHERE "authors"."id" = ? LIMIT 1  [["id", 5]]
+  [1m[36mAuthor Load (0.1ms)[0m  [1mSELECT  "authors".* FROM "authors" WHERE "authors"."id" = ? LIMIT 1[0m  [["id", 6]]
+  Rendered posts/index.html.erb within layouts/application (36.8ms)
+Completed 200 OK in 18520ms (Views: 18506.4ms | ActiveRecord: 1.7ms)
+
+
+Started GET "/" for ::1 at 2018-01-22 16:33:30 -0500
+Processing by PostsController#index as HTML
+  [1m[35mPost Load (0.2ms)[0m  SELECT "posts".* FROM "posts"
+  [1m[36mAuthor Load (0.1ms)[0m  [1mSELECT  "authors".* FROM "authors" WHERE "authors"."id" = ? LIMIT 1[0m  [["id", 4]]
+  [1m[35mAuthor Load (0.1ms)[0m  SELECT  "authors".* FROM "authors" WHERE "authors"."id" = ? LIMIT 1  [["id", 5]]
+  [1m[36mAuthor Load (0.1ms)[0m  [1mSELECT  "authors".* FROM "authors" WHERE "authors"."id" = ? LIMIT 1[0m  [["id", 6]]
+  Rendered posts/index.html.erb within layouts/application (3.0ms)
+Completed 200 OK in 166ms (Views: 165.1ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/assets/active_admin.self-09cd94a8b8f4e810ffdb009982bb06f63aa84dfe9fdf19431f55c24c3fd21bc6.css?body=1" for ::1 at 2018-01-22 16:33:30 -0500
+
+
+Started GET "/assets/jquery_ujs.self-784a997f6726036b1993eb2217c9cb558e1cbb801c6da88105588c56f13b466a.js?body=1" for ::1 at 2018-01-22 16:33:30 -0500
+
+
+Started GET "/assets/jquery-ui/widget.self-fca20bcec06d192f97cffa6e734e24360e227237b8ae7d7e7e60754df7d5444f.js?body=1" for ::1 at 2018-01-22 16:33:30 -0500
+
+
+Started GET "/assets/jquery-ui/version.self-c8e3d1203da26ea7efdf83c1eabb3f0ba55cb68e463f5ccf0d77bd15ce6a8e61.js?body=1" for ::1 at 2018-01-22 16:33:30 -0500
+
+
+Started GET "/assets/jquery-ui/keycode.self-ad63cd20acf49dd333bbbc537454d7d475bd610eb5b88de0dca009f0c3d314b1.js?body=1" for ::1 at 2018-01-22 16:33:30 -0500
+
+
+Started GET "/assets/jquery3.self-06c43429d1047ce3f355da574d8a9750209971b8b1b8f264f91f5518c5fcc060.js?body=1" for ::1 at 2018-01-22 16:33:30 -0500
+
+
+Started GET "/assets/jquery-ui/widgets/datepicker.self-2af0dec09da99d687c31fc224e940687a4eb3694e7b38b0871bba475cad86120.js?body=1" for ::1 at 2018-01-22 16:33:30 -0500
+
+
+Started GET "/assets/jquery-ui/widgets/controlgroup.self-0b7409f97114a33de116bd5429e9df199cbdea3f276d8bd725c4c2c60f244711.js?body=1" for ::1 at 2018-01-22 16:33:31 -0500
+
+
+Started GET "/assets/jquery-ui/escape-selector.self-43e4d61501e4ffb1ecba387affbae1eb3e1c863ab0b0e71897851cddd246e50e.js?body=1" for ::1 at 2018-01-22 16:33:31 -0500
+
+
+Started GET "/assets/jquery-ui/form.self-61347e437e2f29dbf003e5a02a3ff3662ace446c9ad4609f7e2409146a573c95.js?body=1" for ::1 at 2018-01-22 16:33:31 -0500
+
+
+Started GET "/assets/jquery-ui/form-reset-mixin.self-19d29988ce83cd72f9b5c9f28cb59a4ed2906e825605cef626bfb0ddfd76e19f.js?body=1" for ::1 at 2018-01-22 16:33:31 -0500
+
+
+Started GET "/assets/jquery-ui/labels.self-e2666f4057d3df5b54185d383b3f5e56d851c193b00df9c9795febb46e8ec4b1.js?body=1" for ::1 at 2018-01-22 16:33:31 -0500
+
+
+Started GET "/assets/jquery-ui/widgets/checkboxradio.self-aa5f9a257adfc9b411ff9d0414a1ebac2356b14c6cb13c3948feba44e56f050e.js?body=1" for ::1 at 2018-01-22 16:33:31 -0500
+
+
+Started GET "/assets/jquery-ui/widgets/button.self-659b51f6fb5303f90ed8cf551509063770a50168a15795ba834b08f8bf2e0ce0.js?body=1" for ::1 at 2018-01-22 16:33:31 -0500
+
+
+Started GET "/assets/jquery-ui/ie.self-163eb039dcb1e0c3471b7d91386eabb8753da6906e84824c019f9ff56bdb83a6.js?body=1" for ::1 at 2018-01-22 16:33:31 -0500
+
+
+Started GET "/assets/jquery-ui/widgets/mouse.self-f0790a202dcf54fab051e71b042335d5346f9cceb0f645223c1dab93f349a04b.js?body=1" for ::1 at 2018-01-22 16:33:31 -0500
+
+
+Started GET "/assets/jquery-ui/data.self-2067c82e6fe39a9cba5623206a5dc28d5c60d26b95cd100855b78cacf72865b8.js?body=1" for ::1 at 2018-01-22 16:33:31 -0500
+
+
+Started GET "/assets/jquery-ui/plugin.self-d8f576c8e073ca51f095505f47bd09d306b875404cd90afcbb6338287cfb0247.js?body=1" for ::1 at 2018-01-22 16:33:31 -0500
+
+
+Started GET "/assets/jquery-ui/safe-active-element.self-a1f1a1a7dae3269ce03f6fffb2dcc9b4a7490f5d546c65d54417bec3be24b668.js?body=1" for ::1 at 2018-01-22 16:33:31 -0500
+
+
+Started GET "/assets/jquery-ui/safe-blur.self-2cc24c46132d51c7724f6371154241b0a81c9bae5d5681d8f62b01ce46236726.js?body=1" for ::1 at 2018-01-22 16:33:31 -0500
+
+
+Started GET "/assets/jquery-ui/scroll-parent.self-38e26a71a450a29fb63425e8f589a7046862f927eb0a1dbf6a6c44da05196d2e.js?body=1" for ::1 at 2018-01-22 16:33:31 -0500
+
+
+Started GET "/assets/jquery-ui/widgets/draggable.self-42c3eda0b49f105628cea7580fe38c7ed77467cee384bb2c4e095a2bd0a172e6.js?body=1" for ::1 at 2018-01-22 16:33:31 -0500
+
+
+Started GET "/assets/jquery-ui/disable-selection.self-5675f71f2fbbc6857ea700ba843af748b50dbc0150cc87932a7d05ec016bb659.js?body=1" for ::1 at 2018-01-22 16:33:31 -0500
+
+
+Started GET "/assets/jquery-ui/widgets/resizable.self-1a46c2f5b876918e02bf979080e56f57846590cd880721bca5058e84f7f60bae.js?body=1" for ::1 at 2018-01-22 16:33:31 -0500
+
+
+Started GET "/assets/jquery-ui/focusable.self-426e99e67d1f1bd4cb444fd878ee63a6de1f5d1d61451e43022c86214b9eec64.js?body=1" for ::1 at 2018-01-22 16:33:31 -0500
+
+
+Started GET "/assets/jquery-ui/position.self-1b49c8c521e67a4a88bfdad6b4d944d33686d25009a0e40a1e170acdd7b6962a.js?body=1" for ::1 at 2018-01-22 16:33:31 -0500
+
+
+Started GET "/assets/jquery-ui/tabbable.self-f3f62ceed772d3a325cebd6a03221f8a8cb02c6150f4feba738c6525a2953690.js?body=1" for ::1 at 2018-01-22 16:33:31 -0500
+
+
+Started GET "/assets/jquery-ui/unique-id.self-66e85ac85cd0b6b8b1bb89369fc65f608f716869dc0930862a8d421a57a9580a.js?body=1" for ::1 at 2018-01-22 16:33:31 -0500
+
+
+Started GET "/assets/jquery-ui/widgets/dialog.self-2bd687f9580c0be4213c50b4bb1211c28ceedb045eba954e63d40bfbb4d1affd.js?body=1" for ::1 at 2018-01-22 16:33:31 -0500
+
+
+Started GET "/assets/jquery-ui/widgets/sortable.self-6e5e1f07a29b5a89ec1d359363d2800904e3ae548a38ab2f8eded36746d1adbe.js?body=1" for ::1 at 2018-01-22 16:33:31 -0500
+
+
+Started GET "/assets/jquery-ui/widgets/tabs.self-b7f60535e992224ca66c3f11dc943eba9ef42a9605241e27b9dba24c7efb287e.js?body=1" for ::1 at 2018-01-22 16:33:31 -0500
+
+
+Started GET "/assets/active_admin/base.self-cdde0d466bfd8177bbfc3b8fd2df1e8d835530ff5256253097f34c6e5bb1e24a.js?body=1" for ::1 at 2018-01-22 16:33:31 -0500
+
+
+Started GET "/assets/active_admin/ext/jquery.self-ae1efb8ed7902a7f7f8d8fcbbb99282033f11e475561909230e217e1b775051a.js?body=1" for ::1 at 2018-01-22 16:33:31 -0500
+
+
+Started GET "/assets/active_admin/ext/jquery-ui.self-45333a65ddfe1ff71381b2d58c2d4dd73d131e134a1f523664a08fdf5c15c20a.js?body=1" for ::1 at 2018-01-22 16:33:31 -0500
+
+
+Started GET "/assets/active_admin/lib/active_admin.self-ee6dd320b07a50176b470a92a99f5f59d0f4e2b2803a9d65fe7d6746cdf71bc1.js?body=1" for ::1 at 2018-01-22 16:33:31 -0500
+
+
+Started GET "/assets/active_admin/lib/batch_actions.self-507da08bcd6e7513b078ea453da3820aba63d515193672ab0460155a8cb8598b.js?body=1" for ::1 at 2018-01-22 16:33:31 -0500
+
+
+Started GET "/assets/active_admin/lib/dropdown-menu.self-de3391f920f80015b62345768d12b415ef1d72fbc98d00c99e7be670567f7867.js?body=1" for ::1 at 2018-01-22 16:33:31 -0500
+
+
+Started GET "/assets/active_admin/lib/has_many.self-7d41d46ecadbe8d1a30c2d27ae34265157554968b1ef6ec25fd2e168870b1014.js?body=1" for ::1 at 2018-01-22 16:33:31 -0500
+
+
+Started GET "/assets/active_admin/lib/modal_dialog.self-7b22a1856e3d3b830c09682312096e9a564a7f4a9b7f28ba02c6a781aeed4a04.js?body=1" for ::1 at 2018-01-22 16:33:31 -0500
+
+
+Started GET "/assets/active_admin/lib/per_page.self-696cdc4b18a2d48202ec0c7b156a9d9eb2d85265a49cd849fec41788b90a9dd4.js?body=1" for ::1 at 2018-01-22 16:33:31 -0500
+
+
+Started GET "/assets/active_admin/lib/checkbox-toggler.self-873d2c047db1f395e84a74ebfbff8cad31d4fc8ee0d004567e9f5014f03f6515.js?body=1" for ::1 at 2018-01-22 16:33:31 -0500
+
+
+Started GET "/assets/active_admin/lib/table-checkbox-toggler.self-50e6f93dffa0e2d16a233e962a09b800cea0592827afebde179313406b7527d2.js?body=1" for ::1 at 2018-01-22 16:33:31 -0500
+
+
+Started GET "/assets/active_admin/initializers/datepicker.self-172a9282361b295fe3310a48bb28dbe77bee319c792520c87f73f7008aeec684.js?body=1" for ::1 at 2018-01-22 16:33:31 -0500
+
+
+Started GET "/assets/active_admin/initializers/filters.self-5793b83192570303a130f19fce66e8b60ae7fd887f5bcca408aec407c32729c5.js?body=1" for ::1 at 2018-01-22 16:33:31 -0500
+
+
+Started GET "/assets/active_admin/initializers/tabs.self-5f37cede19f91addb4997338a3d854ed2441521f5b7ed73493b8e0bdca41e03b.js?body=1" for ::1 at 2018-01-22 16:33:31 -0500
+
+
+Started GET "/assets/active_admin.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.js?body=1" for ::1 at 2018-01-22 16:33:31 -0500
+
+
+Started GET "/admin" for ::1 at 2018-01-22 16:33:36 -0500
+Processing by Admin::DashboardController#index as HTML
+Completed 401 Unauthorized in 4ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/admin/login" for ::1 at 2018-01-22 16:33:36 -0500
+Processing by ActiveAdmin::Devise::SessionsController#new as HTML
+  Rendered /Users/emily/.rvm/gems/ruby-2.3.3/bundler/gems/activeadmin-7f38dd557052/app/views/active_admin/devise/shared/_links.erb (4.8ms)
+  Rendered /Users/emily/.rvm/gems/ruby-2.3.3/bundler/gems/activeadmin-7f38dd557052/app/views/active_admin/devise/sessions/new.html.erb within layouts/active_admin_logged_out (58.0ms)
+Completed 200 OK in 305ms (Views: 288.9ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/assets/active_admin/print.self-ccc1d4fc3411e4445b8dbe237bf95812cbc58291d7c28de31eae00885f3aaf74.css?body=1" for ::1 at 2018-01-22 16:33:36 -0500
+
+
+Started POST "/admin/login" for ::1 at 2018-01-22 16:33:48 -0500
+Processing by ActiveAdmin::Devise::SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"6c2rmA3xJ45K1ula649vJp8bNGROZL92J1E4xuFnLsc9OJAWid5a+KcIjrk6SzYCYrMG6fg/+KilS3tcSrdLcQ==", "admin_user"=>{"email"=>"admin@example.com", "password"=>"[FILTERED]", "remember_me"=>"0"}, "commit"=>"Login"}
+  [1m[35mAdminUser Load (0.9ms)[0m  SELECT  "admin_users".* FROM "admin_users" WHERE "admin_users"."email" = ?  ORDER BY "admin_users"."id" ASC LIMIT 1  [["email", "admin@example.com"]]
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.7ms)[0m  UPDATE "admin_users" SET "last_sign_in_at" = ?, "current_sign_in_at" = ?, "last_sign_in_ip" = ?, "current_sign_in_ip" = ?, "sign_in_count" = ?, "updated_at" = ? WHERE "admin_users"."id" = ?  [["last_sign_in_at", "2018-01-22 21:33:49.073388"], ["current_sign_in_at", "2018-01-22 21:33:49.073388"], ["last_sign_in_ip", "::1"], ["current_sign_in_ip", "::1"], ["sign_in_count", 1], ["updated_at", "2018-01-22 21:33:49.074759"], ["id", 1]]
+  [1m[36m (0.6ms)[0m  [1mcommit transaction[0m
+Redirected to http://localhost:3000/admin
+Completed 302 Found in 123ms (ActiveRecord: 2.4ms)
+
+
+Started GET "/admin" for ::1 at 2018-01-22 16:33:49 -0500
+Processing by Admin::DashboardController#index as HTML
+  [1m[35mAdminUser Load (0.2ms)[0m  SELECT  "admin_users".* FROM "admin_users" WHERE "admin_users"."id" = ?  ORDER BY "admin_users"."id" ASC LIMIT 1  [["id", 1]]
+  Rendered /Users/emily/.rvm/gems/ruby-2.3.3/bundler/gems/activeadmin-7f38dd557052/app/views/active_admin/page/index.html.arb (151.9ms)
+Completed 200 OK in 164ms (Views: 159.1ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/admin" for ::1 at 2018-01-22 16:35:28 -0500
+Processing by Admin::DashboardController#index as HTML
+  [1m[36mAdminUser Load (0.2ms)[0m  [1mSELECT  "admin_users".* FROM "admin_users" WHERE "admin_users"."id" = ?  ORDER BY "admin_users"."id" ASC LIMIT 1[0m  [["id", 1]]
+  Rendered /Users/emily/.rvm/gems/ruby-2.3.3/bundler/gems/activeadmin-7f38dd557052/app/views/active_admin/page/index.html.arb (172.2ms)
+Completed 200 OK in 200ms (Views: 177.4ms | ActiveRecord: 0.8ms)
+
+
+Started GET "/admin/authors" for ::1 at 2018-01-22 16:35:31 -0500
+Processing by Admin::AuthorsController#index as HTML
+  [1m[35mAdminUser Load (0.1ms)[0m  SELECT  "admin_users".* FROM "admin_users" WHERE "admin_users"."id" = ?  ORDER BY "admin_users"."id" ASC LIMIT 1  [["id", 1]]
+  [1m[36m (0.2ms)[0m  [1mSELECT COUNT(count_column) FROM (SELECT  1 AS count_column FROM "authors" LIMIT 30 OFFSET 0) subquery_for_count[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT COUNT(count_column) FROM (SELECT  1 AS count_column FROM "authors" LIMIT 30 OFFSET 0) subquery_for_count
+  [1m[36m (0.1ms)[0m  [1mSELECT COUNT(*) FROM "authors"[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT COUNT(count_column) FROM (SELECT  1 AS count_column FROM "authors" LIMIT 30 OFFSET 0) subquery_for_count
+  [1m[36mAuthor Load (0.2ms)[0m  [1mSELECT  "authors".* FROM "authors"  ORDER BY "authors"."id" desc LIMIT 30 OFFSET 0[0m
+  [1m[35mPost Load (0.1ms)[0m  SELECT "posts".* FROM "posts"
+  Rendered /Users/emily/.rvm/gems/ruby-2.3.3/bundler/gems/activeadmin-7f38dd557052/app/views/active_admin/resource/index.html.arb (197.6ms)
+Completed 200 OK in 215ms (Views: 209.6ms | ActiveRecord: 1.3ms)
+
+
+Started GET "/assets/active_admin/orderable-29374dbb55b0012d78a37c614d573bb3474f0779849b478a147d0f1845ca6617.png" for ::1 at 2018-01-22 16:35:31 -0500
